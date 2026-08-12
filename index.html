@@ -17,7 +17,10 @@
   *{margin:0;padding:0;box-sizing:border-box}
 
   html,body{
-    height:100%;
+    /* 100% на мобильном считается от полного окна, а адресная строка
+       съедает низ — панель уезжает за экран. dvh меряет то, что видно. */
+    height:100vh;
+    height:100dvh;
     overflow:hidden;
     background:var(--bg);
     color:var(--ink);
@@ -211,17 +214,57 @@
 
   /* ---------- узкий экран ---------- */
   @media (max-width:900px){
+    /* Фото отдаёт место панели, а не наоборот: поле ввода с микрофоном
+       всегда должно быть на экране, оно тут главное. */
     .stage{
       grid-template-columns:1fr;
-      grid-template-rows:1fr auto;
+      grid-template-rows:minmax(0,1fr) auto;
       align-items:stretch;
+      gap:10px;
+      padding:0 14px max(12px, env(safe-area-inset-bottom));
     }
+    .figure{min-height:0;overflow:hidden}
     .figure img{
-      -webkit-mask-image:radial-gradient(86% 80% at 50% 42%, #000 55%, transparent 100%);
-      mask-image:radial-gradient(86% 80% at 50% 42%, #000 55%, transparent 100%);
+      /* на телефоне кадрируем по высоте: бока у снимка пустые, их не жалко,
+         зато фигура заполняет экран. width:100% держит страницу в рамках —
+         без него картинка 2048x1920 вылезает вправо вместе с микрофоном */
+      width:100%;
+      height:100%;
+      max-width:100%;
+      object-fit:cover;
+      object-position:center 42%;
+      -webkit-mask-image:radial-gradient(ellipse 62% 88% at 50% 44%, #000 54%, rgba(0,0,0,.6) 80%, transparent 100%);
+      mask-image:radial-gradient(ellipse 62% 88% at 50% 44%, #000 54%, rgba(0,0,0,.6) 80%, transparent 100%);
     }
-    .panel{max-height:44vh}
-    .log{min-height:64px}
+    .panel{
+      max-height:none;
+      gap:10px;
+      padding:14px;
+      border-radius:18px;
+    }
+    .panel h2{display:none}
+    .log{
+      min-height:0;
+      max-height:26vh;
+      font-size:14px;
+    }
+    .hint{display:none}
+    header{padding:12px 14px;gap:10px}
+    .name{font-size:11px;letter-spacing:.1em}
+    .cv{padding:.55em 1em;font-size:11px}
+    .stage,.panel,.composer{min-width:0}
+  }
+
+  /* очень узкие телефоны: имя в шапке уступает место кнопкам */
+  @media (max-width:400px){
+    .name{display:none}
+  }
+
+  /* Совсем низкие экраны в альбомной ориентации: фото уводим, оставляем диалог */
+  @media (max-height:460px) and (max-width:900px){
+    .figure{display:none}
+    .stage{grid-template-rows:auto}
+    .log{max-height:38vh}
   }
 </style>
 </head>
