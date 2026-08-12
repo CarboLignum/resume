@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Denis Kuznetsov — Ansioluettelo</title>
+<style>
+  :root{
+    --bg:#000; --ink:#f5f5f7;
+    --dim:rgba(245,245,247,.62);
+    --faint:rgba(245,245,247,.30);
+    --line:rgba(255,255,255,.10);
+    --glass:rgba(255,255,255,.045);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:radial-gradient(120% 80% at 50% 0%, #141414 0%, #070707 40%, #000 75%) no-repeat;
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Inter,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+  header{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px clamp(20px,5vw,60px);
+    background:rgba(0,0,0,.6);
+    -webkit-backdrop-filter:blur(24px); backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--line);
+  }
+  .name{font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .back{
+    padding:.6em 1.3em;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:100px;background:var(--glass);
+    transition:background .3s,border-color .3s;
+  }
+  .back:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.26)}
+
+  main{max-width:860px;margin:0 auto;padding:clamp(48px,9vh,110px) clamp(20px,5vw,60px) 140px}
+
+  h1{
+    font-size:clamp(38px,6.5vw,76px);font-weight:600;letter-spacing:-.03em;line-height:1.02;
+    margin-bottom:.5em;
+  }
+  .lead{font-size:clamp(17px,2vw,22px);color:var(--dim);max-width:46em;letter-spacing:-.01em}
+
+  section{margin-top:clamp(46px,7vh,86px)}
+  h2{
+    font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);
+    padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:28px;
+  }
+  h3{font-size:clamp(16px,1.7vw,19px);font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+  p{color:var(--dim);max-width:46em}
+  p + h3{margin-top:26px}
+  .block + .block{margin-top:26px}
+
+  a{color:var(--ink)}
+  .contacts{display:flex;flex-wrap:wrap;gap:10px 26px;color:var(--dim);font-size:15px}
+  .contacts a{text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+  .contacts a:hover{border-color:rgba(255,255,255,.5)}
+
+  .offer{
+    margin-top:clamp(46px,7vh,86px);
+    padding:clamp(26px,3.5vw,44px);
+    border:1px solid var(--line);border-radius:24px;background:var(--glass);
+    -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);
+  }
+  .offer h2{border:0;padding:0;margin-bottom:18px}
+  .big{font-size:clamp(20px,2.6vw,28px);font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="name">Denis Kuznetsov</div>
+  <a class="back" href="index.html">← Takaisin</a>
+</header>
+
+<main>
+
+  <h1>Denis&nbsp;Kuznetsov</h1>
+  <p class="lead">Я произвожу контент целиком и умею его продвигать — от идеи до готового файла, от одного кадра до кампании с продвижением через интернет. При необходимости автоматизирую все процессы.</p>
+
+  <section>
+    <h2>Контакты</h2>
+    <div class="contacts">
+      <a href="mailto:carbo.lignum@gmail.com">carbo.lignum@gmail.com</a>
+      <a href="https://www.linkedin.com/in/denis-k-a53920276" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" target="_blank" rel="noopener">Примеры работ</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Языки</h2>
+    <p>При помощи ИИ веду переписку и готовлю материалы на любом языке в текстовом виде. Мой ИИ-агент принимает вопросы голосом на любом языке — можно просто поговорить с ним на главной странице.</p>
+  </section>
+
+  <section>
+    <h2>О себе</h2>
+    <p>Видео, фотография, графика, тексты, сайты, реклама, автоматизация. Я могу это делать один, потому что всё производство построено на инструментах ИИ.</p>
+    <p style="margin-top:16px">Универсальность здесь не разбросанность, а устройство работы: ролик, кадры к нему, тексты под каждый канал, посадочная страница и рекламная кампания вокруг — это одна задача, и разрывать её между исполнителями дороже и медленнее, чем сделать целиком.</p>
+    <p style="margin-top:16px">Я вошёл в генеративное производство вместе с рынком и с тех пор не выходил из практики.</p>
+  </section>
+
+  <section>
+    <h2>Навыки</h2>
+
+    <div class="block"><h3>Видео</h3>
+    <p>Вертикальные и горизонтальные ролики для Instagram, TikTok, YouTube и сайта. От рекламного ролика до полнометражного фильма. Постановка кадра и управление камерой, сложные сцены, хромакей, кинематографические спецэффекты. Интеграция сгенерированных объектов в реальные съёмочные кадры. Правка сцены без пересъёмки.</p></div>
+
+    <div class="block"><h3>Фотография и графика</h3>
+    <p>Сложные сцены, ракурсы, свет. Предметная и рекламная картинка. Баннеры, обложки, посты. Материалы кампании во всех форматах и размерах под каждый канал — один макет разворачивается во все каналы сразу.</p></div>
+
+    <div class="block"><h3>Соцсети</h3>
+    <p>Контент-план, производство, публикация, расписание. Instagram, TikTok, Facebook, LinkedIn. Количество постов и каналов не ограничено.</p></div>
+
+    <div class="block"><h3>Аналитика и отчётность</h3>
+    <p>Отслеживание результатов публикаций, отчёт по каналам и материалам, правка того, что не сработало. Каждый следующий материал опирается на результат предыдущего.</p></div>
+
+    <div class="block"><h3>Реклама</h3>
+    <p>Meta Ads и Google Ads: настройка кампаний, бюджет, таргетинг, оптимизация.</p></div>
+
+    <div class="block"><h3>Тексты</h3>
+    <p>Сайты, блоги, соцсети, описания, рассылки, презентации — структура, содержание, вёрстка до готового файла.</p></div>
+
+    <div class="block"><h3>Сайты</h3>
+    <p>Сборка, наполнение, обновление содержимого и внешнего вида, поддержка.</p></div>
+
+    <div class="block"><h3>Автоматизация и модернизация процессов</h3>
+    <p>Автоматическая выкладка и ведение каналов. Обработка входящих заявок. Автоматическая подготовка и отправка коммерческих предложений с учётом параметров товара и клиента. Сбор статистики с автоматической правкой слабых мест. ИИ-агент, отвечающий клиентам голосом и текстом. Настраивается один раз и дальше работает без ручного труда.</p></div>
+
+    <div class="block"><h3>Интеграция ИИ в существующие процессы</h3>
+    <p>Разбираю, где у вас уходит ручное время, и заменяю этот участок работающей системой.</p></div>
+  </section>
+
+  <div class="offer">
+    <h2>Что предлагаю</h2>
+    <p class="big">Минимальный заказ — одна картинка.</p>
+    <p>Работаю по трудовому договору — в том числе на срок отдельного проекта или его части. Не абонемент, не годовой контракт, не долгое знакомство. Один кадр, один ролик, одна страница, один текст. Посмотрели результат — дальше решаете сами. Берусь и за разовую задачу, и за постоянное ведение.</p>
+  </div>
+
+  <section>
+    <h2>Об опыте и образовании</h2>
+    <p>Генеративный продакшн — молодая сфера, где традиционный стаж ничего не решает. Главный показатель экспертности здесь не дипломы, а скорость адаптации к новым моделям, стек инструментов и измеримый результат.</p>
+    <p style="margin-top:16px">Вместо долгих презентаций я предлагаю тест на реальной задаче.</p>
+  </section>
+
+</main>
+
+</body>
+</html>
