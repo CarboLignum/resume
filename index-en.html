@@ -182,6 +182,7 @@
   }
   .composer input::placeholder{color:var(--faint)}
 
+
   .mic{
     flex:none;
     width:42px;height:42px;
@@ -324,20 +325,29 @@
     log.scrollTop = log.scrollHeight;
   }
 
+  // Адрес воркера. Ключа Google здесь нет и быть не может —
+  // страница обращается только сюда, воркер сам ходит к модели.
   const WORKER = 'https://round-scene-4de7.carbo-lignum.workers.dev';
+
+  const TXT = {
+    down:  'The connection is down right now. Write directly: carbo.lignum@gmail.com',
+    idle:  'Press the microphone and speak',
+    rec:   'Recording… press to stop',
+    work:  'Listening…',
+    voice: 'voice message',
+    noMic: 'Microphone unavailable',
+    long:  'The message is too long'
+  };
 
   const history = [];
   let busy = false;
 
-  async function ask(text){
-    text = text.trim();
-    if(!text || busy) return;
-
-    say(text, 'me');
-    history.push({role:'me', text});
-    q.value = '';
-
+  // Один путь наружу и для текста, и для звука.
+  async function send(payload, label){
+    if(busy) return;
     busy = true;
+
+    say(label, 'me');
     const dots = document.createElement('div');
     dots.className = 'msg ai';
     dots.style.opacity = '.45';
@@ -349,51 +359,131 @@
       const r = await fetch(WORKER, {
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ message:text, history: history.slice(0,-1) })
+        body: JSON.stringify(Object.assign({ history: history.slice() }, payload))
       });
       const d = await r.json();
       dots.remove();
       if(d.reply){
         say(d.reply, 'ai');
+        if(payload.message) history.push({role:'me', text:payload.message});
         history.push({role:'ai', text:d.reply});
       } else {
-        say('The connection is down right now. Write directly: carbo.lignum@gmail.com', 'ai');
+        say(d.error === 'audio_too_long' ? TXT.long : TXT.down, 'ai');
       }
     }catch(err){
       dots.remove();
-      say('The connection is down right now. Write directly: carbo.lignum@gmail.com', 'ai');
+      say(TXT.down, 'ai');
     }finally{
       busy = false;
+      hint.textContent = TXT.idle;
     }
+  }
+
+  function ask(text){
+    text = text.trim();
+    if(!text) return;
+    q.value = '';
+    send({ message:text }, text);
   }
 
   form.addEventListener('submit', e => { e.preventDefault(); ask(q.value); });
 
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  let rec = null, live = false;
+  /* ------------------------------------------------------------------
+     ГОЛОС. Браузерное распознавание НЕ используется: ему надо заранее
+     назвать язык, а заранее неизвестно, на каком языке заговорит
+     посетитель. Вместо этого пишем звук и отдаём его модели как есть —
+     она мультимодальная, слышит сама и отвечает на языке говорящего.
 
-  if(!SR){
-    hint.textContent = 'Voice input works in Chrome';
-  } else {
-    rec = new SR();
-    rec.continuous = false;
-    rec.interimResults = true;
+       MediaRecorder → WAV 16 кГц → base64 → воркер → Gemini (inlineData)
+     ------------------------------------------------------------------ */
 
-    rec.onstart  = () => { live = true;  mic.classList.add('live');    hint.textContent = 'Listening…'; };
-    rec.onend    = () => { live = false; mic.classList.remove('live'); hint.textContent = 'Press the microphone and speak'; };
-    rec.onerror  = () => { live = false; mic.classList.remove('live'); hint.textContent = 'Microphone unavailable'; };
+  const MAX_SECONDS = 45;
+  let mr = null, chunks = [], stream = null, stopTimer = null;
 
-    rec.onresult = e => {
-      let txt = '';
-      for(const r of e.results) txt += r[0].transcript;
-      q.value = txt;
-      if(e.results[e.results.length - 1].isFinal) ask(txt);
+  function wavFromSamples(samples, rate){
+    const buf = new ArrayBuffer(44 + samples.length * 2);
+    const v = new DataView(buf);
+    const put = (o, s) => { for(let i=0;i<s.length;i++) v.setUint8(o+i, s.charCodeAt(i)); };
+    put(0,'RIFF');  v.setUint32(4, 36 + samples.length*2, true);
+    put(8,'WAVE');  put(12,'fmt ');
+    v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true);
+    v.setUint32(24,rate,true); v.setUint32(28,rate*2,true);
+    v.setUint16(32,2,true); v.setUint16(34,16,true);
+    put(36,'data'); v.setUint32(40, samples.length*2, true);
+    let o = 44;
+    for(let i=0;i<samples.length;i++,o+=2){
+      const s = Math.max(-1, Math.min(1, samples[i]));
+      v.setInt16(o, s < 0 ? s*0x8000 : s*0x7FFF, true);
+    }
+    return new Blob([buf], { type:'audio/wav' });
+  }
+
+  async function toWav16k(blob){
+    const ab = await blob.arrayBuffer();
+    const AC = window.AudioContext || window.webkitAudioContext;
+    const ac = new AC();
+    const decoded = await ac.decodeAudioData(ab);
+    ac.close();
+    const off = new OfflineAudioContext(1, Math.max(1, Math.ceil(decoded.duration * 16000)), 16000);
+    const src = off.createBufferSource();
+    src.buffer = decoded;
+    src.connect(off.destination);
+    src.start(0);
+    const out = await off.startRendering();
+    return wavFromSamples(out.getChannelData(0), 16000);
+  }
+
+  function toBase64(blob){
+    return new Promise(res => {
+      const r = new FileReader();
+      r.onloadend = () => res(String(r.result).split(',')[1]);
+      r.readAsDataURL(blob);
+    });
+  }
+
+  function stopStream(){
+    if(stopTimer){ clearTimeout(stopTimer); stopTimer = null; }
+    if(stream){ stream.getTracks().forEach(t => t.stop()); stream = null; }
+    mic.classList.remove('live');
+  }
+
+  async function startRecording(){
+    try{
+      stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+    }catch(err){
+      hint.textContent = TXT.noMic;
+      return;
+    }
+    chunks = [];
+    mr = new MediaRecorder(stream);
+    mr.ondataavailable = e => { if(e.data && e.data.size) chunks.push(e.data); };
+    mr.onstop = async () => {
+      stopStream();
+      hint.textContent = TXT.work;
+      try{
+        const raw = new Blob(chunks, { type: mr.mimeType || 'audio/webm' });
+        if(raw.size < 1200){ hint.textContent = TXT.idle; return; }
+        const wav = await toWav16k(raw);
+        const b64 = await toBase64(wav);
+        await send({ audio:b64 }, '🎙 ' + TXT.voice);
+      }catch(err){
+        hint.textContent = TXT.idle;
+        say(TXT.down, 'ai');
+      }
     };
+    mr.start();
+    mic.classList.add('live');
+    hint.textContent = TXT.rec;
+    stopTimer = setTimeout(() => { if(mr && mr.state === 'recording') mr.stop(); }, MAX_SECONDS * 1000);
+  }
 
+  if(!navigator.mediaDevices || !window.MediaRecorder){
+    mic.style.display = 'none';
+  } else {
     mic.addEventListener('click', () => {
-      if(live){ rec.stop(); return; }
-      rec.lang = navigator.language || 'en-US';
-      try{ rec.start(); }catch(err){}
+      if(busy) return;
+      if(mr && mr.state === 'recording'){ mr.stop(); return; }
+      startRecording();
     });
   }
 </script>
