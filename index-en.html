@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fi">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -28,12 +28,10 @@
   body{
     display:grid;
     grid-template-rows:auto 1fr;
-    /* мягкое свечение из центра — свет как на фото */
     background:
       radial-gradient(120% 90% at 50% 42%, #141414 0%, #060606 45%, #000 78%);
   }
 
-  /* ---------- шапка ---------- */
   header{
     display:flex;
     align-items:center;
@@ -48,6 +46,7 @@
     text-transform:uppercase;
     color:var(--dim);
   }
+
   .nav{display:flex;align-items:center;gap:clamp(12px,1.6vw,24px)}
   .lang{
     display:flex;align-items:center;gap:.5em;
@@ -79,7 +78,6 @@
   }
   .cv:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.26);transform:translateY(-1px)}
 
-  /* ---------- сцена ---------- */
   .stage{
     position:relative;
     display:grid;
@@ -90,7 +88,6 @@
     gap:clamp(16px,2vw,40px);
   }
 
-  /* фото — во всю доступную высоту, растворяется в фоне */
   .figure{
     position:relative;
     height:100%;
@@ -106,15 +103,12 @@
     object-fit:contain;
     object-position:bottom center;
     display:block;
-    /* растушёвка только по бокам и низу — фигура остаётся целой,
-       а квадратный край кадра не читается на чёрном фоне */
     -webkit-mask-image:radial-gradient(ellipse 52% 92% at 50% 47%, #000 52%, rgba(0,0,0,.6) 78%, transparent 100%);
     mask-image:radial-gradient(ellipse 52% 92% at 50% 47%, #000 52%, rgba(0,0,0,.6) 78%, transparent 100%);
     animation:rise 1.4s cubic-bezier(.16,1,.3,1) both;
   }
   @keyframes rise{from{opacity:0;transform:translateY(18px) scale(1.012)}to{opacity:1;transform:none}}
 
-  /* ---------- панель диалога ---------- */
   .panel{
     display:flex;
     flex-direction:column;
@@ -209,7 +203,6 @@
     text-align:center;
   }
 
-  /* ---------- узкий экран ---------- */
   @media (max-width:900px){
     .stage{
       grid-template-columns:1fr;
@@ -231,9 +224,9 @@
   <div class="name">Denis Kuznetsov</div>
   <div class="nav">
     <div class="lang">
-      <a class="on" href="index.html">FI</a><span>·</span><a href="index-en.html">EN</a>
+      <a href="index.html">FI</a><span>·</span><a class="on" href="index-en.html">EN</a>
     </div>
-    <a class="cv" href="cv.html">Ansioluettelo</a>
+    <a class="cv" href="cv-en.html">CV</a>
   </div>
 </header>
 
@@ -244,15 +237,15 @@
   </div>
 
   <section class="panel">
-    <h2>Kysy minulta</h2>
+    <h2>Ask me</h2>
 
     <div class="log" id="log">
-      <div class="msg ai">Hei. Kysy mitä tahansa siitä, mitä teen — puhu tai kirjoita, millä kielellä haluat.</div>
+      <div class="msg ai">Hi. Ask anything about what I do — speak or type, in any language you like.</div>
     </div>
 
     <form class="composer" id="form">
-      <input id="q" type="text" autocomplete="off" placeholder="Kirjoita kysymys…">
-      <button class="mic" id="mic" type="button" aria-label="Puhu">
+      <input id="q" type="text" autocomplete="off" placeholder="Type your question…">
+      <button class="mic" id="mic" type="button" aria-label="Speak">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
           <rect x="9" y="2.5" width="6" height="11" rx="3" fill="currentColor" stroke="none"/>
           <path d="M5 11a7 7 0 0 0 14 0"/>
@@ -261,7 +254,7 @@
       </button>
     </form>
 
-    <div class="hint" id="hint">Paina mikrofonia ja puhu</div>
+    <div class="hint" id="hint">Press the microphone and speak</div>
   </section>
 
 </main>
@@ -281,8 +274,6 @@
     log.scrollTop = log.scrollHeight;
   }
 
-  // Адрес воркера. Ключа Google здесь нет и быть не может —
-  // страница обращается только сюда, воркер сам ходит к модели.
   const WORKER = 'https://round-scene-4de7.carbo-lignum.workers.dev';
 
   const history = [];
@@ -316,11 +307,11 @@
         say(d.reply, 'ai');
         history.push({role:'ai', text:d.reply});
       } else {
-        say('Yhteys ei juuri nyt toimi. Kirjoita suoraan: carbo.lignum@gmail.com', 'ai');
+        say('The connection is down right now. Write directly: carbo.lignum@gmail.com', 'ai');
       }
     }catch(err){
       dots.remove();
-      say('Yhteys ei juuri nyt toimi. Kirjoita suoraan: carbo.lignum@gmail.com', 'ai');
+      say('The connection is down right now. Write directly: carbo.lignum@gmail.com', 'ai');
     }finally{
       busy = false;
     }
@@ -328,20 +319,19 @@
 
   form.addEventListener('submit', e => { e.preventDefault(); ask(q.value); });
 
-  // --- голос: распознаётся прямо в браузере, ничего никуда не уходит ---
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   let rec = null, live = false;
 
   if(!SR){
-    hint.textContent = 'Puhe toimii Chromessa';
+    hint.textContent = 'Voice input works in Chrome';
   } else {
     rec = new SR();
     rec.continuous = false;
     rec.interimResults = true;
 
-    rec.onstart  = () => { live = true;  mic.classList.add('live');    hint.textContent = 'Kuuntelen…'; };
-    rec.onend    = () => { live = false; mic.classList.remove('live'); hint.textContent = 'Paina mikrofonia ja puhu'; };
-    rec.onerror  = () => { live = false; mic.classList.remove('live'); hint.textContent = 'Mikrofoni ei ole käytettävissä'; };
+    rec.onstart  = () => { live = true;  mic.classList.add('live');    hint.textContent = 'Listening…'; };
+    rec.onend    = () => { live = false; mic.classList.remove('live'); hint.textContent = 'Press the microphone and speak'; };
+    rec.onerror  = () => { live = false; mic.classList.remove('live'); hint.textContent = 'Microphone unavailable'; };
 
     rec.onresult = e => {
       let txt = '';
@@ -352,7 +342,7 @@
 
     mic.addEventListener('click', () => {
       if(live){ rec.stop(); return; }
-      rec.lang = navigator.language || 'fi-FI';
+      rec.lang = navigator.language || 'en-US';
       try{ rec.start(); }catch(err){}
     });
   }

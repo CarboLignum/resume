@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="fi">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,6 +31,12 @@
     border-bottom:1px solid var(--line);
   }
   .name{font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .nav{display:flex;align-items:center;gap:clamp(12px,1.6vw,24px)}
+  .lang{display:flex;align-items:center;gap:.5em;font-size:12px;font-weight:500;letter-spacing:.1em}
+  .lang a{color:var(--faint);text-decoration:none;transition:color .3s}
+  .lang a:hover{color:var(--dim)}
+  .lang a.on{color:var(--ink)}
+  .lang span{color:rgba(255,255,255,.16)}
   .back{
     padding:.6em 1.3em;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
     color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:100px;background:var(--glass);
@@ -40,10 +46,7 @@
 
   main{max-width:860px;margin:0 auto;padding:clamp(48px,9vh,110px) clamp(20px,5vw,60px) 140px}
 
-  h1{
-    font-size:clamp(38px,6.5vw,76px);font-weight:600;letter-spacing:-.03em;line-height:1.02;
-    margin-bottom:.5em;
-  }
+  h1{font-size:clamp(38px,6.5vw,76px);font-weight:600;letter-spacing:-.03em;line-height:1.02;margin-bottom:.5em}
   .lead{font-size:clamp(17px,2vw,22px);color:var(--dim);max-width:46em;letter-spacing:-.01em}
 
   section{margin-top:clamp(46px,7vh,86px)}
@@ -53,13 +56,13 @@
   }
   h3{font-size:clamp(16px,1.7vw,19px);font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
   p{color:var(--dim);max-width:46em}
-  p + h3{margin-top:26px}
+  p + p{margin-top:16px}
   .block + .block{margin-top:26px}
 
-  a{color:var(--ink)}
-  .contacts{display:flex;flex-wrap:wrap;gap:10px 26px;color:var(--dim);font-size:15px}
-  .contacts a{text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+  .contacts{display:flex;flex-direction:column;gap:8px;color:var(--dim);font-size:15px}
+  .contacts a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
   .contacts a:hover{border-color:rgba(255,255,255,.5)}
+  .contacts .row span{color:var(--faint)}
 
   .offer{
     margin-top:clamp(46px,7vh,86px);
@@ -75,76 +78,85 @@
 
 <header>
   <div class="name">Denis Kuznetsov</div>
-  <a class="back" href="index.html">← Takaisin</a>
+  <div class="nav">
+    <div class="lang">
+      <a class="on" href="cv.html">FI</a><span>·</span><a href="cv-en.html">EN</a>
+    </div>
+    <a class="back" href="index.html">← Etusivu</a>
+  </div>
 </header>
 
 <main>
 
   <h1>Denis&nbsp;Kuznetsov</h1>
-  <p class="lead">Я произвожу контент целиком и умею его продвигать — от идеи до готового файла, от одного кадра до кампании с продвижением через интернет. При необходимости автоматизирую все процессы.</p>
+  <p class="lead">Tuotan sisältöä kokonaisuudessaan ja osaan myös markkinoida sitä — ideasta valmiiseen tiedostoon, yksittäisestä kuvasta kokonaiseen verkkomarkkinointikampanjaan. Tarvittaessa automatisoin koko prosessin.</p>
 
   <section>
-    <h2>Контакты</h2>
+    <h2>Yhteystiedot</h2>
     <div class="contacts">
-      <a href="mailto:carbo.lignum@gmail.com">carbo.lignum@gmail.com</a>
-      <a href="https://www.linkedin.com/in/denis-k-a53920276" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="#" target="_blank" rel="noopener">Примеры работ</a>
+      <div class="row"><a href="mailto:carbo.lignum@gmail.com">carbo.lignum@gmail.com</a></div>
+      <div class="row"><a href="https://www.linkedin.com/in/denis-k-a53920276" target="_blank" rel="noopener">www.linkedin.com/in/denis-k-a53920276</a></div>
+      <div class="row"><span>Verkkosivusto:</span> <a href="index.html">laskeutumissivu</a></div>
+      <div class="row"><span>Työnäytteet:</span> <a href="https://carbolignum.github.io/ai-craft-studio/" target="_blank" rel="noopener">AI Craft Studio</a></div>
     </div>
   </section>
 
   <section>
-    <h2>Языки</h2>
-    <p>При помощи ИИ веду переписку и готовлю материалы на любом языке в текстовом виде. Мой ИИ-агент принимает вопросы голосом на любом языке — можно просто поговорить с ним на главной странице.</p>
+    <h2>Kielet</h2>
+    <p>Tekoälyn avulla hoidan kirjallista viestintää ja valmistan materiaaleja millä tahansa kielellä.</p>
+    <p>Tekoälyagenttini vastaanottaa kysymyksiä puheella millä tahansa kielellä — sen kanssa voi keskustella suoraan verkkosivustolla.</p>
   </section>
 
   <section>
-    <h2>О себе</h2>
-    <p>Видео, фотография, графика, тексты, сайты, реклама, автоматизация. Я могу это делать один, потому что всё производство построено на инструментах ИИ.</p>
-    <p style="margin-top:16px">Универсальность здесь не разбросанность, а устройство работы: ролик, кадры к нему, тексты под каждый канал, посадочная страница и рекламная кампания вокруг — это одна задача, и разрывать её между исполнителями дороже и медленнее, чем сделать целиком.</p>
-    <p style="margin-top:16px">Я вошёл в генеративное производство вместе с рынком и с тех пор не выходил из практики.</p>
+    <h2>Minusta</h2>
+    <p>Video, valokuvaus, grafiikka, tekstit, verkkosivustot, mainonta ja automaatio. Pystyn tekemään tämän kaiken itsenäisesti, koska koko tuotantoprosessini perustuu tekoälytyökaluihin.</p>
+    <p>Monipuolisuus ei tässä tarkoita hajanaista osaamista, vaan tapaa, jolla työ on rakennettu: video, siihen tarvittavat kuvat, tekstit eri kanaviin, laskeutumissivu ja sitä tukeva mainoskampanja ovat kaikki saman tehtävän osia. Työn jakaminen useiden tekijöiden kesken on kalliimpaa ja hitaampaa kuin kokonaisuuden toteuttaminen yhtenä prosessina.</p>
+    <p>Aloitin generatiivisen tuotannon samaan aikaan, kun ala alkoi kehittyä, ja olen siitä lähtien työskennellyt sen parissa käytännössä.</p>
   </section>
 
   <section>
-    <h2>Навыки</h2>
+    <h2>Osaaminen</h2>
 
-    <div class="block"><h3>Видео</h3>
-    <p>Вертикальные и горизонтальные ролики для Instagram, TikTok, YouTube и сайта. От рекламного ролика до полнометражного фильма. Постановка кадра и управление камерой, сложные сцены, хромакей, кинематографические спецэффекты. Интеграция сгенерированных объектов в реальные съёмочные кадры. Правка сцены без пересъёмки.</p></div>
+    <div class="block"><h3>Video</h3>
+    <p>Pysty- ja vaakasuuntaiset videot Instagramiin, TikTokiin, YouTubeen ja verkkosivustoille. Mainosvideoista täyspitkiin elokuviin. Kuvan sommittelu ja kameran hallinta, monimutkaiset kohtaukset, chroma key -tekniikka ja elokuvamaiset visuaaliset tehosteet. Generoitujen objektien integrointi oikeaan kuvamateriaaliin. Kohtausten muokkaaminen ilman uudelleenkuvausta.</p></div>
 
-    <div class="block"><h3>Фотография и графика</h3>
-    <p>Сложные сцены, ракурсы, свет. Предметная и рекламная картинка. Баннеры, обложки, посты. Материалы кампании во всех форматах и размерах под каждый канал — один макет разворачивается во все каналы сразу.</p></div>
+    <div class="block"><h3>Valokuvaus ja grafiikka</h3>
+    <p>Monimutkaiset kohtaukset, kuvakulmat ja valaistus. Tuote- ja mainoskuvat. Bannerit, kansikuvat ja sosiaalisen median julkaisut. Kampanjamateriaalit kaikissa eri kanavien vaatimissa formaateissa ja ko'oissa — yksi perusmateriaali mukautetaan kaikkiin kanaviin.</p></div>
 
-    <div class="block"><h3>Соцсети</h3>
-    <p>Контент-план, производство, публикация, расписание. Instagram, TikTok, Facebook, LinkedIn. Количество постов и каналов не ограничено.</p></div>
+    <div class="block"><h3>Sosiaalinen media</h3>
+    <p>Sisältösuunnitelma, tuotanto, julkaiseminen ja ajastus. Instagram, TikTok, Facebook ja LinkedIn. Julkaisujen ja kanavien määrää ei ole rajoitettu.</p></div>
 
-    <div class="block"><h3>Аналитика и отчётность</h3>
-    <p>Отслеживание результатов публикаций, отчёт по каналам и материалам, правка того, что не сработало. Каждый следующий материал опирается на результат предыдущего.</p></div>
+    <div class="block"><h3>Analytiikka ja raportointi</h3>
+    <p>Julkaisujen tulosten seuranta, raportointi kanavittain ja materiaaleittain sekä toimimattomien sisältöjen korjaaminen. Jokainen seuraava materiaali perustuu edellisen tuloksiin.</p></div>
 
-    <div class="block"><h3>Реклама</h3>
-    <p>Meta Ads и Google Ads: настройка кампаний, бюджет, таргетинг, оптимизация.</p></div>
+    <div class="block"><h3>Mainonta</h3>
+    <p>Meta Ads ja Google Ads: kampanjoiden rakentaminen, budjetointi, kohdentaminen ja optimointi.</p></div>
 
-    <div class="block"><h3>Тексты</h3>
-    <p>Сайты, блоги, соцсети, описания, рассылки, презентации — структура, содержание, вёрстка до готового файла.</p></div>
+    <div class="block"><h3>Tekstit</h3>
+    <p>Verkkosivustot, blogit, sosiaalinen media, kuvaukset, sähköpostikampanjat ja esitykset — rakenne, sisältö ja taitto valmiiseen tiedostoon asti.</p></div>
 
-    <div class="block"><h3>Сайты</h3>
-    <p>Сборка, наполнение, обновление содержимого и внешнего вида, поддержка.</p></div>
+    <div class="block"><h3>Verkkosivustot</h3>
+    <p>Verkkosivustojen rakentaminen, sisällön lisääminen, sisällön ja ulkoasun päivittäminen sekä ylläpito.</p></div>
 
-    <div class="block"><h3>Автоматизация и модернизация процессов</h3>
-    <p>Автоматическая выкладка и ведение каналов. Обработка входящих заявок. Автоматическая подготовка и отправка коммерческих предложений с учётом параметров товара и клиента. Сбор статистики с автоматической правкой слабых мест. ИИ-агент, отвечающий клиентам голосом и текстом. Настраивается один раз и дальше работает без ручного труда.</p></div>
+    <div class="block"><h3>Prosessien automatisointi ja modernisointi</h3>
+    <p>Automaattinen julkaiseminen ja kanavien hallinta. Saapuvien yhteydenottojen käsittely. Kaupallisten tarjousten automaattinen laatiminen ja lähettäminen tuotteen ja asiakkaan parametrien perusteella. Tilastojen kerääminen ja heikkojen kohtien automaattinen korjaaminen. Tekoälyagentti, joka palvelee asiakkaita puheella ja tekstillä. Järjestelmä määritetään kerran, minkä jälkeen se toimii ilman manuaalista työtä.</p></div>
 
-    <div class="block"><h3>Интеграция ИИ в существующие процессы</h3>
-    <p>Разбираю, где у вас уходит ручное время, и заменяю этот участок работающей системой.</p></div>
+    <div class="block"><h3>Tekoälyn integrointi olemassa oleviin prosesseihin</h3>
+    <p>Selvitän, missä työvaiheissa kuluu tarpeettomasti manuaalista työaikaa, ja korvaan nämä vaiheet toimivalla automatisoidulla järjestelmällä.</p></div>
   </section>
 
   <div class="offer">
-    <h2>Что предлагаю</h2>
-    <p class="big">Минимальный заказ — одна картинка.</p>
-    <p>Работаю по трудовому договору — в том числе на срок отдельного проекта или его части. Не абонемент, не годовой контракт, не долгое знакомство. Один кадр, один ролик, одна страница, один текст. Посмотрели результат — дальше решаете сами. Берусь и за разовую задачу, и за постоянное ведение.</p>
+    <h2>Mitä tarjoan</h2>
+    <p class="big">Pienin toimeksianto voi olla yksi kuva.</p>
+    <p>Työskentelen työsopimuksella, myös määräaikaisesti yksittäisen projektin tai sen osan ajan.</p>
+    <p>Ei tilausta, ei vuosisopimusta eikä pitkää tutustumisprosessia. Yksi kuva, yksi video, yksi sivu tai yksi teksti. Näette tuloksen ja päätätte sen jälkeen itse, jatketaanko yhteistyötä.</p>
+    <p>Otan vastaan sekä yksittäisiä toimeksiantoja että jatkuvaa työtä.</p>
   </div>
 
   <section>
-    <h2>Об опыте и образовании</h2>
-    <p>Генеративный продакшн — молодая сфера, где традиционный стаж ничего не решает. Главный показатель экспертности здесь не дипломы, а скорость адаптации к новым моделям, стек инструментов и измеримый результат.</p>
-    <p style="margin-top:16px">Вместо долгих презентаций я предлагаю тест на реальной задаче.</p>
+    <h2>Kokemus ja koulutus</h2>
+    <p>Generatiivinen tuotanto on nuori ala, jossa perinteinen työkokemuksen pituus ei ole ratkaiseva tekijä. Tärkeimpiä osaamisen mittareita ovat kyky mukautua nopeasti uusiin malleihin, käytössä oleva työkalukokonaisuus sekä mitattavat tulokset.</p>
+    <p>Pitkien esitysten sijaan ehdotan testiä todellisella työtehtävällä.</p>
   </section>
 
 </main>

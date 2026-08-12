@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Denis Kuznetsov — CV</title>
+<style>
+  :root{
+    --bg:#000; --ink:#f5f5f7;
+    --dim:rgba(245,245,247,.62);
+    --faint:rgba(245,245,247,.30);
+    --line:rgba(255,255,255,.10);
+    --glass:rgba(255,255,255,.045);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:radial-gradient(120% 80% at 50% 0%, #141414 0%, #070707 40%, #000 75%) no-repeat;
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Inter,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+  header{
+    position:sticky; top:0; z-index:10;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px clamp(20px,5vw,60px);
+    background:rgba(0,0,0,.6);
+    -webkit-backdrop-filter:blur(24px); backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--line);
+  }
+  .name{font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  .nav{display:flex;align-items:center;gap:clamp(12px,1.6vw,24px)}
+  .lang{display:flex;align-items:center;gap:.5em;font-size:12px;font-weight:500;letter-spacing:.1em}
+  .lang a{color:var(--faint);text-decoration:none;transition:color .3s}
+  .lang a:hover{color:var(--dim)}
+  .lang a.on{color:var(--ink)}
+  .lang span{color:rgba(255,255,255,.16)}
+  .back{
+    padding:.6em 1.3em;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:100px;background:var(--glass);
+    transition:background .3s,border-color .3s;
+  }
+  .back:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.26)}
+
+  main{max-width:860px;margin:0 auto;padding:clamp(48px,9vh,110px) clamp(20px,5vw,60px) 140px}
+
+  h1{font-size:clamp(38px,6.5vw,76px);font-weight:600;letter-spacing:-.03em;line-height:1.02;margin-bottom:.5em}
+  .lead{font-size:clamp(17px,2vw,22px);color:var(--dim);max-width:46em;letter-spacing:-.01em}
+
+  section{margin-top:clamp(46px,7vh,86px)}
+  h2{
+    font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);
+    padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:28px;
+  }
+  h3{font-size:clamp(16px,1.7vw,19px);font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+  p{color:var(--dim);max-width:46em}
+  p + p{margin-top:16px}
+  .block + .block{margin-top:26px}
+
+  .contacts{display:flex;flex-direction:column;gap:8px;color:var(--dim);font-size:15px}
+  .contacts a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  .contacts a:hover{border-color:rgba(255,255,255,.5)}
+  .contacts .row span{color:var(--faint)}
+
+  .offer{
+    margin-top:clamp(46px,7vh,86px);
+    padding:clamp(26px,3.5vw,44px);
+    border:1px solid var(--line);border-radius:24px;background:var(--glass);
+    -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);
+  }
+  .offer h2{border:0;padding:0;margin-bottom:18px}
+  .big{font-size:clamp(20px,2.6vw,28px);font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="name">Denis Kuznetsov</div>
+  <div class="nav">
+    <div class="lang">
+      <a href="cv.html">FI</a><span>·</span><a class="on" href="cv-en.html">EN</a>
+    </div>
+    <a class="back" href="index-en.html">← Home</a>
+  </div>
+</header>
+
+<main>
+
+  <h1>Denis&nbsp;Kuznetsov</h1>
+  <p class="lead">I produce complete content and know how to promote it — from an idea to the finished file, from a single visual to a full online marketing campaign. When needed, I automate the entire process.</p>
+
+  <section>
+    <h2>Contact information</h2>
+    <div class="contacts">
+      <div class="row"><a href="mailto:carbo.lignum@gmail.com">carbo.lignum@gmail.com</a></div>
+      <div class="row"><a href="https://www.linkedin.com/in/denis-k-a53920276" target="_blank" rel="noopener">www.linkedin.com/in/denis-k-a53920276</a></div>
+      <div class="row"><span>Website:</span> <a href="index-en.html">landing page</a></div>
+      <div class="row"><span>Work samples:</span> <a href="https://carbolignum.github.io/ai-craft-studio/" target="_blank" rel="noopener">AI Craft Studio</a></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Languages</h2>
+    <p>With the help of AI, I can handle written communication and prepare materials in any language.</p>
+    <p>My AI agent can take voice questions in any language — you can simply talk to it directly on the website.</p>
+  </section>
+
+  <section>
+    <h2>About me</h2>
+    <p>Video, photography, graphics, copy, websites, advertising, automation. I can handle all of this independently because the entire production workflow is built around AI tools.</p>
+    <p>Versatility here does not mean a scattered skill set. It is how the workflow is structured: the video, the visuals for it, copy for each channel, the landing page, and the advertising campaign around it are all parts of a single task. Splitting that work among multiple specialists is more expensive and slower than producing it as one integrated process.</p>
+    <p>I entered generative production as the market itself was emerging and have remained hands-on ever since.</p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+
+    <div class="block"><h3>Video</h3>
+    <p>Vertical and horizontal video for Instagram, TikTok, YouTube, and websites. From advertising videos to feature-length films. Shot composition and camera control, complex scenes, chroma key, cinematic visual effects. Integration of generated objects into real-world footage. Scene modification without reshooting.</p></div>
+
+    <div class="block"><h3>Photography &amp; Graphics</h3>
+    <p>Complex scenes, camera angles, and lighting. Product and advertising visuals. Banners, covers, and social media posts. Campaign materials in every format and size required for each channel — one master design adapted across all channels.</p></div>
+
+    <div class="block"><h3>Social Media</h3>
+    <p>Content planning, production, publishing, and scheduling. Instagram, TikTok, Facebook, LinkedIn. No limits on the number of posts or channels.</p></div>
+
+    <div class="block"><h3>Analytics &amp; Reporting</h3>
+    <p>Tracking publication performance, reporting by channel and asset, and correcting what did not work. Each new piece of content is informed by the performance of the previous one.</p></div>
+
+    <div class="block"><h3>Advertising</h3>
+    <p>Meta Ads and Google Ads: campaign setup, budgeting, targeting, and optimization.</p></div>
+
+    <div class="block"><h3>Copywriting</h3>
+    <p>Websites, blogs, social media, descriptions, email campaigns, presentations — structure, content, and layout through to the finished file.</p></div>
+
+    <div class="block"><h3>Websites</h3>
+    <p>Website creation, content population, visual and content updates, and ongoing maintenance.</p></div>
+
+    <div class="block"><h3>Process Automation &amp; Modernization</h3>
+    <p>Automated publishing and channel management. Processing incoming inquiries. Automatic preparation and delivery of commercial proposals based on product and customer parameters. Data collection with automatic identification and correction of weak points. AI agents that communicate with customers by voice and text. The system is configured once and then continues operating without manual work.</p></div>
+
+    <div class="block"><h3>AI Integration into Existing Processes</h3>
+    <p>I identify where manual work is consuming time and replace that part of the process with a working automated system.</p></div>
+  </section>
+
+  <div class="offer">
+    <h2>What I offer</h2>
+    <p class="big">The minimum assignment can be a single image.</p>
+    <p>I work under an employment contract, including fixed-term contracts for a specific project or part of a project.</p>
+    <p>No subscription, no annual contract, no lengthy onboarding. One visual, one video, one page, one piece of copy. You see the result and decide whether to continue.</p>
+    <p>I take on both one-off assignments and ongoing work.</p>
+  </div>
+
+  <section>
+    <h2>Experience &amp; Education</h2>
+    <p>Generative production is a young field where traditional years of experience are not the deciding factor. What matters most is the ability to adapt quickly to new models, the range of tools you can work with, and measurable results.</p>
+    <p>Instead of lengthy presentations, I offer a test using a real task.</p>
+  </section>
+
+</main>
+
+</body>
+</html>
