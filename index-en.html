@@ -98,6 +98,11 @@
     position:relative;
     height:100%;
     min-height:0;
+    /* Без min-width:0 колонка сетки раздувается до собственной ширины
+       снимка (2048 px). На узких экранах из-за этого вся страница вылезала
+       вправо: у панели диалога срезался край строки, а имя уезжало за экран
+       целиком. Проверено на 390 и 420 px. */
+    min-width:0;
     display:flex;
     align-items:flex-end;
     justify-content:center;
@@ -119,8 +124,8 @@
   /* Отдельный кадр для имени: сдвиг вправо и центровка по высоте должны
      пережить анимацию, поэтому они повторены в обоих кадрах. */
   @keyframes risename{
-    from{opacity:0;transform:translate(var(--vx), calc(-50% + 18px))}
-    to{opacity:1;transform:translate(var(--vx), -50%)}
+    from{opacity:0;transform:translate(var(--vx), 18px)}
+    to{opacity:1;transform:translate(var(--vx), 0)}
   }
 
   /* ---------- панель диалога ---------- */
@@ -134,7 +139,9 @@
   .vname{
     position:absolute;
     left:50%;
-    top:50%;
+    /* Верх имени на уровне плеча, а не по середине кадра: отсчёт от высоты
+       самой рамки со снимком, поэтому держится на любом экране. */
+    top:19%;
     /* Отступ вправо от середины кадра. Считается от ВЫСОТЫ окна, а не от
        ширины: снимок тянется по высоте (height:100%), значит и его ширина
        привязана к высоте. С отсчётом в vw имя ложилось поверх человека. */
@@ -142,7 +149,7 @@
        любой сдвиг, заданный здесь. Из-за неё имя дважды оставалось на месте.
        Поэтому у имени своя анимация, где сдвиг сохранён в обоих кадрах. */
     --vx:19vh;
-    transform:translate(var(--vx), -50%);
+    transform:translate(var(--vx), 0);
     writing-mode:vertical-rl;
     text-orientation:mixed;
     /* Пятнадцать букв столбиком занимают почти всю высоту снимка.
@@ -150,7 +157,7 @@
        при 6.6vh это около 73vh, а сам снимок высотой примерно 89vh.
        overflow:hidden здесь ставить нельзя — он режет хвост вместо того,
        чтобы ужать. */
-    font-size:clamp(22px,6.6vh,84px);
+    font-size:clamp(20px,5.6vh,72px);
     font-weight:600;
     letter-spacing:.13em;
     text-transform:uppercase;
@@ -308,7 +315,7 @@
       left:auto;
       right:6px;
       --vx:0px;
-      font-size:clamp(20px,5.6vh,52px);
+      font-size:clamp(18px,4.8vh,46px);
       letter-spacing:.14em;
     }
     header{padding:12px 14px;gap:10px}
