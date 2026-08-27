@@ -116,6 +116,12 @@
     animation:rise 1.4s cubic-bezier(.16,1,.3,1) both;
   }
   @keyframes rise{from{opacity:0;transform:translateY(18px) scale(1.012)}to{opacity:1;transform:none}}
+  /* Отдельный кадр для имени: сдвиг вправо и центровка по высоте должны
+     пережить анимацию, поэтому они повторены в обоих кадрах. */
+  @keyframes risename{
+    from{opacity:0;transform:translate(var(--vx), calc(-50% + 18px))}
+    to{opacity:1;transform:translate(var(--vx), -50%)}
+  }
 
   /* ---------- панель диалога ---------- */
   /* Имя вертикально справа от фотографии — как на обложке журнала.
@@ -127,16 +133,24 @@
      тексту идёт свет. Это дешевле любой тени и не мылит буквы. */
   .vname{
     position:absolute;
-    right:0;
+    left:50%;
     top:50%;
-    transform:translateY(-50%);
+    /* Отступ вправо от середины кадра. Считается от ВЫСОТЫ окна, а не от
+       ширины: снимок тянется по высоте (height:100%), значит и его ширина
+       привязана к высоте. С отсчётом в vw имя ложилось поверх человека. */
+    /* ВНИМАНИЕ. Общая анимация rise заканчивается на transform:none и стирает
+       любой сдвиг, заданный здесь. Из-за неё имя дважды оставалось на месте.
+       Поэтому у имени своя анимация, где сдвиг сохранён в обоих кадрах. */
+    --vx:19vh;
+    transform:translate(var(--vx), -50%);
     writing-mode:vertical-rl;
     text-orientation:mixed;
-    /* Пятнадцать букв столбиком должны уместиться по высоте кадра.
-       Кегль считается от высоты окна: при расчёте от ширины имя обрезалось.
+    /* Пятнадцать букв столбиком занимают почти всю высоту снимка.
+       Ход одной буквы примерно 0.75 кегля, пятнадцать букв — 11 кеглей;
+       при 6.6vh это около 73vh, а сам снимок высотой примерно 89vh.
        overflow:hidden здесь ставить нельзя — он режет хвост вместо того,
-       чтобы ужать. Пусть лучше буквы будут мельче, но имя целым. */
-    font-size:clamp(15px,3.1vh,32px);
+       чтобы ужать. */
+    font-size:clamp(22px,6.6vh,84px);
     font-weight:600;
     letter-spacing:.13em;
     text-transform:uppercase;
@@ -151,7 +165,7 @@
     background-clip:text;
     color:transparent;
     filter:drop-shadow(0 2px 18px rgba(0,0,0,.55));
-    animation:rise 1.4s .28s cubic-bezier(.16,1,.3,1) both;
+    animation:risename 1.4s .28s cubic-bezier(.16,1,.3,1) both;
   }
   .panel{
     display:flex;
@@ -288,9 +302,13 @@
     .hint{display:none}
     .hint.on{display:block}
     .vname{
-      font-size:clamp(18px,5.2vw,30px);
-      letter-spacing:.22em;
-      right:2px;
+      /* На телефоне снимок кадрируется по ширине экрана, поэтому имя
+         прижимаем к правому краю окна, а не отсчитываем от середины. */
+      left:auto;
+      right:6px;
+      --vx:0px;
+      font-size:clamp(20px,5.6vh,52px);
+      letter-spacing:.14em;
     }
     header{padding:12px 14px;gap:10px}
     .name{font-size:11px;letter-spacing:.1em}
