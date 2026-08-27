@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -118,6 +118,42 @@
   @keyframes rise{from{opacity:0;transform:translateY(18px) scale(1.012)}to{opacity:1;transform:none}}
 
   /* ---------- панель диалога ---------- */
+  /* Имя вертикально справа от фотографии — как на обложке журнала.
+     Раньше оно стояло мелким в шапке слева и терялось; здесь оно работает
+     как часть кадра. writing-mode ставит буквы столбиком, читается сверху
+     вниз — так набирают корешок и обложку.
+
+     Заливка градиентом даёт глянец: светлее сверху, глуше книзу, будто по
+     тексту идёт свет. Это дешевле любой тени и не мылит буквы. */
+  .vname{
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+    /* Пятнадцать букв столбиком должны уместиться по высоте кадра.
+       Кегль считается от высоты окна: при расчёте от ширины имя обрезалось.
+       overflow:hidden здесь ставить нельзя — он режет хвост вместо того,
+       чтобы ужать. Пусть лучше буквы будут мельче, но имя целым. */
+    font-size:clamp(15px,3.1vh,32px);
+    font-weight:600;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    white-space:nowrap;
+    pointer-events:none;
+    user-select:none;
+    background:linear-gradient(180deg,
+      rgba(245,245,247,.98) 0%,
+      rgba(245,245,247,.72) 42%,
+      rgba(245,245,247,.34) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    filter:drop-shadow(0 2px 18px rgba(0,0,0,.55));
+    animation:rise 1.4s .28s cubic-bezier(.16,1,.3,1) both;
+  }
+
   .panel{
     display:flex;
     flex-direction:column;
@@ -252,6 +288,11 @@
     /* подсказка спрятана, но во время записи показывает уровень и секунды */
     .hint{display:none}
     .hint.on{display:block}
+    .vname{
+      font-size:clamp(18px,5.2vw,30px);
+      letter-spacing:.22em;
+      right:2px;
+    }
     header{padding:12px 14px;gap:10px}
     .name{font-size:11px;letter-spacing:.1em}
     .cv{padding:.55em 1em;font-size:11px}
@@ -274,7 +315,6 @@
 <body>
 
 <header>
-  <div class="name">Denis Kuznetsov</div>
   <div class="nav">
     <div class="lang">
       <a href="index.html">FI</a><span>·</span><a class="on" href="index-en.html">EN</a>
@@ -287,6 +327,7 @@
 
   <div class="figure">
     <img src="avatar.png" alt="Denis Kuznetsov">
+    <div class="vname" aria-hidden="true">Denis Kuznetsov</div>
   </div>
 
   <section class="panel">
