@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Denis Kuznetsov — Ansioluettelo</title>
+<!-- Inter с Google Fonts. Раньше веб-шрифта не было вовсе: список начинался
+     с -apple-system, и на Маке страница шла шрифтом SF Pro, а на Windows и
+     Android доходила до Arial. Один и тот же документ выглядел по-разному.
+     Inter — ближайший к SF Pro свободный шрифт; ставим его первым, чтобы
+     вид был одинаковым везде. Веса берём только те, что реально в ходу:
+     400 для текста, 500 и 600 для заголовков и подписей. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 <style>
   :root{
     --bg:#000; --ink:#f5f5f7;
@@ -18,7 +27,7 @@
     background:radial-gradient(120% 80% at 50% 0%, #141414 0%, #070707 40%, #000 75%) no-repeat;
     background-attachment:fixed;
     color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Inter,Arial,sans-serif;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
     line-height:1.6;
   }
@@ -72,6 +81,21 @@
   }
   .offer h2{border:0;padding:0;margin-bottom:18px}
   .big{font-size:clamp(20px,2.6vw,28px);font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+
+  /* Ссылка внутри текста. Раньше правила не было вовсе: стилизованы были
+     только контакты и переключатель языка. Ссылка, поставленная внутри
+     абзаца, падала на браузерный синий, а после первого клика — на
+     фиолетовый. На чёрном фоне это видно за версту. */
+  .block a, main p a, .offer a{
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1px;
+    transition:border-color .3s;
+  }
+  .block a:hover, main p a:hover, .offer a:hover{border-color:rgba(255,255,255,.5)}
+  /* Никакого фиолетового ни при каких обстоятельствах. */
+  a:visited{color:inherit}
 </style>
 </head>
 <body>

@@ -1,9 +1,18 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fi">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Denis Kuznetsov</title>
+<!-- Inter с Google Fonts. Раньше веб-шрифта не было вовсе: список начинался
+     с -apple-system, и на Маке страница шла шрифтом SF Pro, а на Windows и
+     Android доходила до Arial. Один и тот же документ выглядел по-разному.
+     Inter — ближайший к SF Pro свободный шрифт; ставим его первым, чтобы
+     вид был одинаковым везде. Веса берём только те, что реально в ходу:
+     400 для текста, 500 и 600 для заголовков и подписей. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 <style>
   :root{
     --bg:#000;
@@ -24,7 +33,7 @@
     overflow:hidden;
     background:var(--bg);
     color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Inter,Arial,sans-serif;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
   }
 
@@ -334,6 +343,21 @@
     .stage{grid-template-rows:auto}
     .log{max-height:38vh}
   }
+
+  /* Ссылка внутри текста. Раньше правила не было вовсе: стилизованы были
+     только контакты и переключатель языка. Ссылка, поставленная внутри
+     абзаца, падала на браузерный синий, а после первого клика — на
+     фиолетовый. На чёрном фоне это видно за версту. */
+  .block a, main p a, .offer a{
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:1px;
+    transition:border-color .3s;
+  }
+  .block a:hover, main p a:hover, .offer a:hover{border-color:rgba(255,255,255,.5)}
+  /* Никакого фиолетового ни при каких обстоятельствах. */
+  a:visited{color:inherit}
 </style>
 </head>
 <body>
