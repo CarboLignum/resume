@@ -4,188 +4,216 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Denis Kuznetsov — Ansioluettelo</title>
-<!-- Inter с Google Fonts. Раньше веб-шрифта не было вовсе: список начинался
-     с -apple-system, и на Маке страница шла шрифтом SF Pro, а на Windows и
-     Android доходила до Arial. Один и тот же документ выглядел по-разному.
-     Inter — ближайший к SF Pro свободный шрифт; ставим его первым, чтобы
-     вид был одинаковым везде. Веса берём только те, что реально в ходу:
-     400 для текста, 500 и 600 для заголовков и подписей. -->
+<meta name="description" content="Denis Kuznetsov — Sisällöntuotanto ja sisällön edistäminen • Myynti ja asiakashankinta">
+<link rel="canonical" href="https://carbolignum.github.io/resume/cv.html">
+<link rel="alternate" hreflang="fi" href="https://carbolignum.github.io/resume/cv.html">
+<link rel="alternate" hreflang="en" href="https://carbolignum.github.io/resume/cv-en.html">
+<link rel="alternate" hreflang="sv" href="https://carbolignum.github.io/resume/cv-sv.html">
+<link rel="alternate" hreflang="no" href="https://carbolignum.github.io/resume/cv-no.html">
+<link rel="alternate" hreflang="x-default" href="https://carbolignum.github.io/resume/cv-en.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
-<style>
-  :root{
-    --bg:#000; --ink:#f5f5f7;
-    --dim:rgba(245,245,247,.62);
-    --faint:rgba(245,245,247,.30);
-    --line:rgba(255,255,255,.10);
-    --glass:rgba(255,255,255,.045);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    background:radial-gradient(120% 80% at 50% 0%, #141414 0%, #070707 40%, #000 75%) no-repeat;
-    background-attachment:fixed;
-    color:var(--ink);
-    font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;
-    line-height:1.6;
-  }
-  header{
-    position:sticky; top:0; z-index:10;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:18px clamp(20px,5vw,60px);
-    background:rgba(0,0,0,.6);
-    -webkit-backdrop-filter:blur(24px); backdrop-filter:blur(24px);
-    border-bottom:1px solid var(--line);
-  }
-  .name{font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
-  .nav{display:flex;align-items:center;gap:clamp(12px,1.6vw,24px)}
-  .lang{display:flex;align-items:center;gap:.5em;font-size:12px;font-weight:500;letter-spacing:.1em}
-  .lang a{color:var(--faint);text-decoration:none;transition:color .3s}
-  .lang a:hover{color:var(--dim)}
-  .lang a.on{color:var(--ink)}
-  .lang span{color:rgba(255,255,255,.16)}
-  .back{
-    padding:.6em 1.3em;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:100px;background:var(--glass);
-    transition:background .3s,border-color .3s;
-  }
-  .back:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.26)}
-
-  main{max-width:860px;margin:0 auto;padding:clamp(48px,9vh,110px) clamp(20px,5vw,60px) 140px}
-
-  h1{font-size:clamp(38px,6.5vw,76px);font-weight:600;letter-spacing:-.03em;line-height:1.02;margin-bottom:.5em}
-  .lead{font-size:clamp(17px,2vw,22px);color:var(--dim);max-width:46em;letter-spacing:-.01em}
-
-  section{margin-top:clamp(46px,7vh,86px)}
-  h2{
-    font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);
-    padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:28px;
-  }
-  h3{font-size:clamp(16px,1.7vw,19px);font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
-  p{color:var(--dim);max-width:46em}
-  p + p{margin-top:16px}
-  .block + .block{margin-top:26px}
-
-  .contacts{display:flex;flex-direction:column;gap:8px;color:var(--dim);font-size:15px}
-  .contacts a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
-  .contacts a:hover{border-color:rgba(255,255,255,.5)}
-  .contacts .row span{color:var(--faint)}
-
-  .offer{
-    margin-top:clamp(46px,7vh,86px);
-    padding:clamp(26px,3.5vw,44px);
-    border:1px solid var(--line);border-radius:24px;background:var(--glass);
-    -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);
-  }
-  .offer h2{border:0;padding:0;margin-bottom:18px}
-  .big{font-size:clamp(20px,2.6vw,28px);font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
-
-  /* Ссылка внутри текста. Раньше правила не было вовсе: стилизованы были
-     только контакты и переключатель языка. Ссылка, поставленная внутри
-     абзаца, падала на браузерный синий, а после первого клика — на
-     фиолетовый. На чёрном фоне это видно за версту. */
-  .block a, main p a, .offer a{
-    color:var(--ink);
-    text-decoration:none;
-    border-bottom:1px solid var(--line);
-    padding-bottom:1px;
-    transition:border-color .3s;
-  }
-  .block a:hover, main p a:hover, .offer a:hover{border-color:rgba(255,255,255,.5)}
-  /* Никакого фиолетового ни при каких обстоятельствах. */
-  a:visited{color:inherit}
-</style>
+<link rel="stylesheet" href="cv.css">
 </head>
 <body>
 
-<header>
-  <div class="name">Denis Kuznetsov</div>
-  <div class="nav">
-    <div class="lang">
-      <a class="on" href="cv.html">FI</a><span>·</span><a href="cv-en.html">EN</a>
-    </div>
+<header class="top">
+  <div class="who">Denis Kuznetsov</div>
+  <div class="right">
+    <nav class="lang"><a class="on" href="cv.html">FI</a><span>·</span><a href="cv-en.html">EN</a><span>·</span><a href="cv-sv.html">SV</a><span>·</span><a href="cv-no.html">NO</a></nav>
     <a class="back" href="index.html">← Etusivu</a>
   </div>
 </header>
 
 <main>
 
-  <h1>Denis&nbsp;Kuznetsov</h1>
-  <p class="lead">Tuotan sisältöä kokonaisuudessaan ja osaan myös markkinoida sitä — ideasta valmiiseen tiedostoon, yksittäisestä kuvasta kokonaiseen verkkomarkkinointikampanjaan ja automaattiseen myyntijärjestelmään. Tarvittaessa automatisoin koko prosessin.</p>
-
-  <section>
-    <h2>Yhteystiedot</h2>
-    <div class="contacts">
-      <div class="row"><a href="mailto:carbo.lignum@gmail.com">carbo.lignum@gmail.com</a></div>
-      <div class="row"><a href="https://www.linkedin.com/in/denis-k-a53920276" target="_blank" rel="noopener">www.linkedin.com/in/denis-k-a53920276</a></div>
-      <div class="row"><span>Verkkosivusto:</span> <a href="index.html">laskeutumissivu</a></div>
-      <div class="row"><span>Sisältötyönäytteet:</span> <a href="https://visuals.ai-craft-studio.com/index.html" target="_blank" rel="noopener">visuals.ai-craft-studio.com</a></div>
-      <div class="row"><span>Myyntijärjestelmä:</span> <a href="https://ai-craft-studio.com/index.html" target="_blank" rel="noopener">ai-craft-studio.com</a></div>
+  <section class="hero wrap">
+    <h1>Denis&nbsp;Kuznetsov</h1>
+    <div class="tagline">CONTENT • SALES</div>
+    <div class="sub">Sisällöntuotanto ja sisällön edistäminen • Myynti ja asiakashankinta</div>
+    <div class="body">
+      <p>Työskentelen kahdella pääalueella: digitaalisen sisällön tuotanto ja edistäminen sekä myynti ja asiakashankinta.</p>
+      <p>Käytän tekoälyä, automaatiota ja data-analyysiä työvälineinä tuotannon nopeuttamiseen, suurten tietomäärien käsittelyyn, personointiin ja toistuvien prosessien automatisointiin.</p>
     </div>
   </section>
 
-  <section>
-    <h2>Kielet</h2>
-    <p>Tekoälyn avulla hoidan kirjallista viestintää ja valmistan materiaaleja millä tahansa kielellä.</p>
-    <p>Tekoälyagenttini vastaanottaa kysymyksiä puheella millä tahansa kielellä — sen kanssa voi keskustella suoraan verkkosivustolla.</p>
+  <section class="pillar wrap">
+    <div class="label">CONTENT</div>
+    <div class="title">Sisällöntuotanto ja sisällön edistäminen</div>
+    <p class="lead">Pystyn toteuttamaan koko prosessin itsenäisesti ideasta ja lähtömateriaaleista valmiiseen sisältöön, julkaisuun ja edistämiseen.</p>
+    <div class="grid">
+      <div class="item">
+        <h3>Video</h3>
+        <p>Eri formaattien videoiden tuotanto: mainos- ja esittelyvideot, lyhyet pystyvideot sekä sisältö sosiaaliseen mediaan, YouTubeen ja verkkosivuille.</p>
+        <p>Editointi, grafiikka, ääni, AI-video sekä materiaalien mukauttaminen eri formaatteihin ja kanaviin.</p>
+      </div>
+      <div class="item">
+        <h3>Design, kuvat ja grafiikka</h3>
+        <p>Mainoskuvien, bannerien, sosiaalisen median ja verkkosivujen visuaalien, tuotekuvien ja muiden digitaalisten materiaalien tuottaminen.</p>
+        <p>Valokuvien käsittely sekä kuvien, grafiikan ja visuaalisten materiaalien luominen ja muokkaaminen tekoälyn ja muiden työkalujen avulla.</p>
+      </div>
+      <div class="item">
+        <h3>Tekstit</h3>
+        <p>Mainos- ja informaatiotekstit, sosiaalisen median julkaisut, tuote- ja palvelukuvaukset sekä verkkosivujen, landing page -sivujen ja mainoskampanjoiden tekstit.</p>
+      </div>
+      <div class="item">
+        <h3>Sosiaalinen media ja markkinointi</h3>
+        <p>Sisällön valmistelu ja mukauttaminen eri kanaviin ja formaatteihin, julkaiseminen ja edistäminen.</p>
+        <p>Mainosmateriaalit, Meta Ads ja Google Ads, tulosten analysointi sekä sisällön ja markkinoinnin jatkokehitys tulosten perusteella.</p>
+      </div>
+      <div class="item">
+        <h3>Verkkosivut ja landing page -sivut</h3>
+        <p>Verkkosivujen ja laskeutumissivujen luominen ja sisällöntuotanto. Tekstin, kuvien, videon, mainonnan ja analytiikan yhdistäminen yhdeksi digitaaliseksi kokonaisuudeksi.</p>
+      </div>
+    </div>
+    <div class="cta">
+      <h4>Työnäytteet</h4>
+      <p>Videoita, kuvia, designia ja muita esimerkkejä tuottamastani sisällöstä:</p>
+      <a class="linkbig" href="https://visuals.ai-craft-studio.com/index.html" target="_blank" rel="noopener">visuals.ai-craft-studio.com</a>
+    </div>
   </section>
 
-  <section>
-    <h2>Minusta</h2>
-    <p>Video, valokuvaus, grafiikka, tekstit, verkkosivustot, mainonta, myynti ja automaatio. Pystyn tekemään tämän kaiken itsenäisesti, koska koko tuotanto- ja myyntiprosessini perustuu tekoälytyökaluihin.</p>
-    <p>Sisällöntuotanto ja myynti ovat minulle saman saumattoman prosessin osia. Monipuolisuus ei tässä tarkoita hajanaista osaamista, vaan tapaa, jolla työ on rakennettu: video, kuvat, tekstit eri kanaviin, laskeutumissivu, mainoskampanja ja asiakashankinnan automaatio ovat kaikki saman tehtävän osia. Työn jakaminen useiden tekijöiden kesken on kalliimpaa ja hitaampaa kuin kokonaisuuden toteuttaminen yhtenä prosessina.</p>
-    <p>Aloitin generatiivisen tuotannon samaan aikaan, kun ala alkoi kehittyä, ja olen siitä lähtien työskennellyt sen parissa käytännössä.</p>
+  <section class="pillar wrap">
+    <div class="label">SALES</div>
+    <div class="title">Myynti ja asiakashankinta</div>
+    <p class="lead">Pystyn työskentelemään yksittäisten myynnin vaiheiden lisäksi myös rakentamaan itse potentiaalisten asiakkaiden etsimisen ja hankinnan prosessin.</p>
+    <div class="grid">
+      <div class="item">
+        <h3>Asiakashaku ja tietokantojen rakentaminen</h3>
+        <p>Potentiaalisten asiakkaiden etsiminen, kohdennettujen ja paikallisten tietokantojen rakentaminen sekä saatavilla olevan datan kerääminen, jäsentäminen ja käsittely.</p>
+      </div>
+      <div class="item">
+        <h3>Markkina- ja kilpailija-analyysi</h3>
+        <p>Markkinoiden, kilpailijoiden, sijainnin ja muun saatavilla olevan datan analysointi. Tilastollisten ja matemaattisten menetelmien käyttö potentiaalisten asiakkaiden arviointiin, valintaan ja priorisointiin.</p>
+      </div>
+      <div class="item">
+        <h3>Segmentointi ja valinta</h3>
+        <p>Suurten tietokantojen käsittely sekä yritysten tai asiakkaiden valinta määriteltyjen kriteerien, ominaisuuksien ja tarjouksen potentiaalisen relevanssin perusteella.</p>
+      </div>
+      <div class="item">
+        <h3>Personoitu viestintä</h3>
+        <p>Yksilöllisten yhteydenottojen ja kaupallisten tarjousten valmistelu yrityksen, sen toiminnan ja saatavilla olevan tiedon perusteella.</p>
+      </div>
+      <div class="item">
+        <h3>Myynnin automatisointi</h3>
+        <p>Tekoälyn ja automaation käyttö potentiaalisten asiakkaiden etsintään ja käsittelyyn, datan analysointiin, personoidun viestinnän valmisteluun, prosessin tukemiseen ja tulosten käsittelyyn.</p>
+      </div>
+    </div>
+    <div class="cta">
+      <p>Voin yhdistää nämä vaiheet yhdeksi prosessiksi:</p>
+      <div class="chain">markkina ja data → potentiaalisten asiakkaiden tietokanta → analyysi → valinta → personoitu yhteydenotto → tarjous → jatkokäsittely → analytiikka</div>
+    </div>
   </section>
 
-  <section>
-    <h2>Osaaminen</h2>
+  <section class="section wrap">
+    <h2>TOIMIVAT JÄRJESTELMÄT JA PROJEKTIT</h2>
 
-    <div class="block"><h3>Autonomiset myynnit ja asiakashankinta</h3>
-    <p>Laitan tekoälyn etsimään ja kontaktoimaan kohdeasiakkaita täysin automaattisesti. Kerään ainutlaatuisia paikallisia asiakasrekistereitä matemaattisten menetelmien, tilastoanalyysin ja kilpailija-analyysin pohjalta. Tekoälyagentti hoitaa viestinnän ja ohjaa asiakkaan kauppaan ilman manuaalista rutiinityötä.</p>
-    <p>Käytännön case-esimerkki: Suunnittelin ja toteutin autonomisen tekoälyagentin ravintola-alalle (HoReCa). Järjestelmä kerää itsenäisesti paikallisen kohderyhmätietokannan ja käy sen kanssa kauppaa verkkosovelluksen kautta tuottaen yli 20 automaattista tilausta päivittäin. Myynti muuttuu intuitiosta ennustettavaksi ja hallittavaksi algoritmiksi. Järjestelmä on nähtävissä osoitteessa <a href="https://ai-craft-studio.com/index.html" target="_blank" rel="noopener">ai-craft-studio.com</a>.</p></div>
+    <div class="case">
+      <h3>Automatisoitu asiakashankintajärjestelmä — HoReCa</h3>
+      <div class="row"><div class="k">Tehtävä</div><div class="v"><p>Rakentaa järjestelmä, joka etsii itsenäisesti potentiaalisia asiakkaita ravintola-alalta ja vie heidät tarjoukseen tutustumisen ensimmäisten vaiheiden läpi.</p></div></div>
+      <div class="row"><div class="k">Mitä rakensin</div><div class="v"><p>Järjestelmä yhdistää potentiaalisten asiakkaiden etsinnän, tietokannan rakentamisen ja käsittelyn, saatavilla olevan datan analysoinnin, personoidun viestinnän ja ravintola-alalle suunnatun konkreettisen tarjouksen esittämisen.</p>
+        <p>Projektia varten on rakennettu todellinen kaupallinen tuote: ravintoloille tarkoitettu autonominen myyntijärjestelmä, johon kuuluvat oma tilauskanava, AI-agentti, asiakaskannan käsittely, sisältö ja muut ratkaisun osat.</p></div></div>
+      <div class="row"><div class="k">Mitä järjestelmä tekee</div><div class="v"><p>Potentiaalisten asiakkaiden etsintä ja ensimmäinen yhteydenotto on automatisoitu. Järjestelmä työskentelee itsenäisesti potentiaalisten asiakkaiden kanssa ja mahdollistaa asiakashankinnan skaalaamisen ilman jokaisen kontaktin manuaalista käsittelyä.</p></div></div>
+      <div class="caselink">
+        <p>Projektin julkinen toteutus:</p>
+        <a class="linkbig" href="https://ai-craft-studio.com/index.html" target="_blank" rel="noopener">ai-craft-studio.com</a>
+      </div>
+    </div>
 
-    <div class="block"><h3>Video</h3>
-    <p>Pysty- ja vaakasuuntaiset videot Instagramiin, TikTokiin, YouTubeen ja verkkosivustoille. Mainosvideoista täyspitkiin elokuviin. Kuvan sommittelu ja kameran hallinta, monimutkaiset kohtaukset, chroma key -tekniikka ja elokuvamaiset visuaaliset tehosteet. Generoitujen objektien integrointi oikeaan kuvamateriaaliin. Kohtausten muokkaaminen ilman uudelleenkuvausta.</p></div>
+    <div class="case">
+      <h3>AI Job Agent</h3>
+      <div class="row"><div class="k">Tehtävä</div><div class="v"><p>Automatisoida suurten työpaikkamäärien haku ja käsittely sekä tunnistaa kokonaisuudesta ne työpaikat, jotka vastaavat todellisia ammatillisia valmiuksiani.</p></div></div>
+      <div class="row"><div class="k">Mitä rakensin</div><div class="v"><p>Järjestelmä hakee työpaikat ja niiden täydellisen sisällön ulkoisista lähteistä, kerää ja jäsentää datan sekä suorittaa paikallisen suodatuksen ja sisällön semanttisen analyysin.</p>
+        <p>Sopivat työpaikat siirretään tämän jälkeen erilliseen työnantajalle yhteydenoton prosessiin.</p></div></div>
+      <div class="row"><div class="k">Mitä järjestelmä tekee</div><div class="v"><p>Järjestelmä pystyy käsittelemään tuhansia työpaikkoja päivittäin, suodattamaan automaattisesti epäolennaiset, analysoimaan jäljelle jäävät, valitsemaan sopivat ja siirtämään ne seuraavaan yhteydenottoprosessiin.</p>
+        <p>Yhteydenottoprosessissa huomioidaan käytettävissä olevat kanavat — lomakkeet ja sähköposti — sekä aikaisempien toimenpiteiden historia ja suoja saman työpaikan toistuvaa käsittelyä vastaan.</p>
+        <p>Tekoäly on tässä yksi toimivan prosessin komponenteista yhdessä datankeruun, käsittelysääntöjen, automaation ja tilanhallinnan kanssa.</p></div></div>
+      <div class="caselink">
+        <p>AI Job Agent — toimiva järjestelmä:</p>
+        <a class="linkbig" href="https://carbolignum.github.io/resume/index.html" target="_blank" rel="noopener">carbolignum.github.io/resume/index.html</a>
+      </div>
+    </div>
 
-    <div class="block"><h3>Valokuvaus ja grafiikka</h3>
-    <p>Monimutkaiset kohtaukset, kuvakulmat ja valaistus. Tuote- ja mainoskuvat. Bannerit, kansikuvat ja sosiaalisen median julkaisut. Kampanjamateriaalit kaikissa eri kanavien vaatimissa formaateissa ja ko'oissa — yksi perusmateriaali mukautetaan kaikkiin kanaviin.</p></div>
-
-    <div class="block"><h3>Sosiaalinen media</h3>
-    <p>Sisältösuunnitelma, tuotanto, julkaiseminen ja ajastus. Instagram, TikTok, Facebook ja LinkedIn. Julkaisujen ja kanavien määrää ei ole rajoitettu.</p></div>
-
-    <div class="block"><h3>Analytiikka ja raportointi</h3>
-    <p>Julkaisujen tulosten seuranta, raportointi kanavittain ja materiaaleittain sekä toimimattomien sisältöjen korjaaminen. Jokainen seuraava materiaali perustuu edellisen tuloksiin ja tarkkoihin lukuihin.</p></div>
-
-    <div class="block"><h3>Mainonta</h3>
-    <p>Meta Ads ja Google Ads: kampanjoiden rakentaminen, budjetointi, kohdentaminen ja optimointi.</p></div>
-
-    <div class="block"><h3>Tekstit</h3>
-    <p>Verkkosivustot, blogit, sosiaalinen media, kuvaukset, sähköpostikampanjat ja esitykset — rakenne, sisältö ja taitto valmiiseen tiedostoon asti.</p></div>
-
-    <div class="block"><h3>Verkkosivustot</h3>
-    <p>Verkkosivustojen rakentaminen, sisällön lisääminen, sisällön ja ulkoasun päivittäminen sekä ylläpito.</p></div>
-
-    <div class="block"><h3>Prosessien automatisointi ja modernisointi</h3>
-    <p>Automaattinen julkaiseminen ja kanavien hallinta. Saapuvien yhteydenottojen käsittely. Kaupallisten tarjousten automaattinen laatiminen ja lähettäminen tuotteen ja asiakkaan parametrien perusteella. Tilastojen kerääminen ja heikkojen kohtien automaattinen korjaaminen. Tekoälyagentti, joka palvelee asiakkaita puheella ja tekstillä. Järjestelmä määritetään kerran, minkä jälkeen se toimii ilman manuaalista työtä.</p></div>
-
-    <div class="block"><h3>Tekoälyn integrointi olemassa oleviin prosesseihin</h3>
-    <p>Selvitän, missä työvaiheissa kuluu tarpeettomasti manuaalista työaikaa, ja korvaan nämä vaiheet toimivalla automatisoidulla järjestelmällä.</p></div>
+    <div class="case">
+      <h3>Digitaalisen sisällön tuotanto ja edistäminen</h3>
+      <p>Voin myös rakentaa sisällöntuotannon yhtenäiseksi työprosessiksi:</p>
+      <div class="chain">idea → kuva / video → teksti → mukautus kanavaan → julkaisu → mainonta ja edistäminen → tulosten analyysi</div>
+      <div class="row" style="margin-top:18px"><div class="k">Mitä järjestelmä tekee</div><div class="v"><p>Näin työ ei rajoitu yksittäiseen kuvaan, videoon tai tekstiin, vaan kattaa koko sisällöntuotannon ja edistämisen ketjun.</p></div></div>
+      <div class="caselink">
+        <p>Esimerkkejä:</p>
+        <a class="linkbig" href="https://visuals.ai-craft-studio.com/index.html" target="_blank" rel="noopener">visuals.ai-craft-studio.com</a>
+      </div>
+    </div>
   </section>
 
-  <div class="offer">
-    <h2>Mitä tarjoan</h2>
-    <p class="big">Pienin toimeksianto voi olla yksi kuva tai yksittäinen automaatioskripti.</p>
-    <p>Työskentelen työsopimuksella, myös määräaikaisesti yksittäisen projektin tai sen osan ajan.</p>
-    <p>Ei tilausta, ei vuosisopimusta eikä pitkää tutustumisprosessia. Yksi kuva, yksi video, yksi sivu, yksi teksti tai automaatiotesti. Näette tuloksen ja päätätte sen jälkeen itse, jatketaanko yhteistyötä.</p>
-    <p>Otan vastaan sekä yksittäisiä toimeksiantoja että jatkuvaa työtä.</p>
-  </div>
+  <section class="section minor wrap">
+    <h2>MUUT OSAAMISALUEET</h2>
+    <p class="intro">Käytän näitä taitoja CONTENT- ja SALES-tehtävien sekä yrityksen muiden prosessien tukena.</p>
+    <div class="grid">
+      <div class="item">
+        <h3>AI-integraatio</h3>
+        <p>Tekoälyn integrointi olemassa oleviin työprosesseihin: tiedonkäsittely, analyysi, materiaalien tuottaminen, viestintä ja toistuvien toimintojen suorittaminen.</p>
+      </div>
+      <div class="item">
+        <h3>Prosessien automatisointi</h3>
+        <p>Olemassa olevan prosessin analysointi, manuaalisten ja toistuvien vaiheiden tunnistaminen sekä työkalujen rakentaminen niiden automatisointiin.</p>
+      </div>
+      <div class="item">
+        <h3>Data ja analytiikka</h3>
+        <p>Datan kerääminen ja käsittely, tilastollinen analyysi, kilpailija-analyysi, GA4, Plausible, Matomo, UTM, Meta/Google-pikselit, CRM sekä omat Python-työkalut.</p>
+      </div>
+      <div class="item">
+        <h3>Web</h3>
+        <p>Verkkosivujen, landing page -sivujen ja web-työkalujen rakentaminen sisältöä, myyntiä ja muita digitaalisia tehtäviä varten.</p>
+      </div>
+    </div>
+    <p class="note">Näiden teknologioiden tärkein tehtävä on minulle konkreettisen käytännön ongelman ratkaiseminen, ei tekoälyn tai automaation käyttäminen niiden itsensä vuoksi.</p>
+  </section>
 
-  <section>
-    <h2>Kokemus ja koulutus</h2>
-    <p>Generatiivinen tuotanto ja tekoälyautomaatio ovat nuoria aloja, joissa perinteinen työkokemuksen pituus ei ole ratkaiseva tekijä. Tärkeimpiä osaamisen mittareita ovat kyky mukautua nopeasti uusiin malleihin, käytössä oleva työkalukokonaisuus sekä mitattavat tulokset.</p>
-    <p>Pitkien esitysten sijaan ehdotan testiä todellisella työtehtävällä.</p>
+  <section class="section wrap">
+    <h2>KOKEMUS</h2>
+    <div class="job">
+      <h3>2022–nykyhetki | Itsenäinen toiminta, Suomi</h3>
+      <p>Sisältö ja digitaalinen markkinointi, internetprojektit, myynti, automaatio ja omien AI-työkalujen kehittäminen.</p>
+    </div>
+    <div class="job">
+      <h3>2014–2022 | Itsenäinen toiminta verkkokaupan parissa</h3>
+    </div>
+    <p class="expnote">Yli 3 vuotta käytännön työskentelyä tekoälyn kanssa sisällöntuotannossa ja työprosessien automatisoinnissa.</p>
+  </section>
+
+  <section class="section permit wrap">
+    <h2>TYÖLUPA</h2>
+    <p>Työlupa: Kyllä.</p>
+  </section>
+
+  <section class="section wrap">
+    <h2>YHTEYSTIEDOT JA TYÖNÄYTTEET</h2>
+    <div class="contacts">
+      <div>
+        <div class="who">Denis Kuznetsov</div>
+        <div class="c">
+          <div class="k">Email</div>
+          <div><a href="mailto:denis@ai-craft-studio.com">denis@ai-craft-studio.com</a></div>
+          <div><a href="mailto:carbo.lignum@gmail.com">carbo.lignum@gmail.com</a></div>
+        </div>
+        <div class="c">
+          <div class="k">LinkedIn</div>
+          <div><a href="https://www.linkedin.com/in/denis-k-a53920276/" target="_blank" rel="noopener">linkedin.com/in/denis-k-a53920276/</a></div>
+        </div>
+      </div>
+      <div>
+        <div class="c">
+          <div class="k">Sisältö / portfolio</div>
+          <div><a href="https://visuals.ai-craft-studio.com/index.html" target="_blank" rel="noopener">visuals.ai-craft-studio.com</a></div>
+        </div>
+        <div class="c">
+          <div class="k">HoReCa-projekti</div>
+          <div><a href="https://ai-craft-studio.com/index.html" target="_blank" rel="noopener">ai-craft-studio.com</a></div>
+        </div>
+      </div>
+    </div>
   </section>
 
 </main>

@@ -4,188 +4,216 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Denis Kuznetsov — CV</title>
-<!-- Inter с Google Fonts. Раньше веб-шрифта не было вовсе: список начинался
-     с -apple-system, и на Маке страница шла шрифтом SF Pro, а на Windows и
-     Android доходила до Arial. Один и тот же документ выглядел по-разному.
-     Inter — ближайший к SF Pro свободный шрифт; ставим его первым, чтобы
-     вид был одинаковым везде. Веса берём только те, что реально в ходу:
-     400 для текста, 500 и 600 для заголовков и подписей. -->
+<meta name="description" content="Denis Kuznetsov — Content Production &amp; Promotion • Sales &amp; Customer Acquisition">
+<link rel="canonical" href="https://carbolignum.github.io/resume/cv-en.html">
+<link rel="alternate" hreflang="fi" href="https://carbolignum.github.io/resume/cv.html">
+<link rel="alternate" hreflang="en" href="https://carbolignum.github.io/resume/cv-en.html">
+<link rel="alternate" hreflang="sv" href="https://carbolignum.github.io/resume/cv-sv.html">
+<link rel="alternate" hreflang="no" href="https://carbolignum.github.io/resume/cv-no.html">
+<link rel="alternate" hreflang="x-default" href="https://carbolignum.github.io/resume/cv-en.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
-<style>
-  :root{
-    --bg:#000; --ink:#f5f5f7;
-    --dim:rgba(245,245,247,.62);
-    --faint:rgba(245,245,247,.30);
-    --line:rgba(255,255,255,.10);
-    --glass:rgba(255,255,255,.045);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    background:radial-gradient(120% 80% at 50% 0%, #141414 0%, #070707 40%, #000 75%) no-repeat;
-    background-attachment:fixed;
-    color:var(--ink);
-    font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;
-    line-height:1.6;
-  }
-  header{
-    position:sticky; top:0; z-index:10;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:18px clamp(20px,5vw,60px);
-    background:rgba(0,0,0,.6);
-    -webkit-backdrop-filter:blur(24px); backdrop-filter:blur(24px);
-    border-bottom:1px solid var(--line);
-  }
-  .name{font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
-  .nav{display:flex;align-items:center;gap:clamp(12px,1.6vw,24px)}
-  .lang{display:flex;align-items:center;gap:.5em;font-size:12px;font-weight:500;letter-spacing:.1em}
-  .lang a{color:var(--faint);text-decoration:none;transition:color .3s}
-  .lang a:hover{color:var(--dim)}
-  .lang a.on{color:var(--ink)}
-  .lang span{color:rgba(255,255,255,.16)}
-  .back{
-    padding:.6em 1.3em;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:100px;background:var(--glass);
-    transition:background .3s,border-color .3s;
-  }
-  .back:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.26)}
-
-  main{max-width:860px;margin:0 auto;padding:clamp(48px,9vh,110px) clamp(20px,5vw,60px) 140px}
-
-  h1{font-size:clamp(38px,6.5vw,76px);font-weight:600;letter-spacing:-.03em;line-height:1.02;margin-bottom:.5em}
-  .lead{font-size:clamp(17px,2vw,22px);color:var(--dim);max-width:46em;letter-spacing:-.01em}
-
-  section{margin-top:clamp(46px,7vh,86px)}
-  h2{
-    font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);
-    padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:28px;
-  }
-  h3{font-size:clamp(16px,1.7vw,19px);font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
-  p{color:var(--dim);max-width:46em}
-  p + p{margin-top:16px}
-  .block + .block{margin-top:26px}
-
-  .contacts{display:flex;flex-direction:column;gap:8px;color:var(--dim);font-size:15px}
-  .contacts a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
-  .contacts a:hover{border-color:rgba(255,255,255,.5)}
-  .contacts .row span{color:var(--faint)}
-
-  .offer{
-    margin-top:clamp(46px,7vh,86px);
-    padding:clamp(26px,3.5vw,44px);
-    border:1px solid var(--line);border-radius:24px;background:var(--glass);
-    -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);
-  }
-  .offer h2{border:0;padding:0;margin-bottom:18px}
-  .big{font-size:clamp(20px,2.6vw,28px);font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
-
-  /* Ссылка внутри текста. Раньше правила не было вовсе: стилизованы были
-     только контакты и переключатель языка. Ссылка, поставленная внутри
-     абзаца, падала на браузерный синий, а после первого клика — на
-     фиолетовый. На чёрном фоне это видно за версту. */
-  .block a, main p a, .offer a{
-    color:var(--ink);
-    text-decoration:none;
-    border-bottom:1px solid var(--line);
-    padding-bottom:1px;
-    transition:border-color .3s;
-  }
-  .block a:hover, main p a:hover, .offer a:hover{border-color:rgba(255,255,255,.5)}
-  /* Никакого фиолетового ни при каких обстоятельствах. */
-  a:visited{color:inherit}
-</style>
+<link rel="stylesheet" href="cv.css">
 </head>
 <body>
 
-<header>
-  <div class="name">Denis Kuznetsov</div>
-  <div class="nav">
-    <div class="lang">
-      <a href="cv.html">FI</a><span>·</span><a class="on" href="cv-en.html">EN</a>
-    </div>
+<header class="top">
+  <div class="who">Denis Kuznetsov</div>
+  <div class="right">
+    <nav class="lang"><a href="cv.html">FI</a><span>·</span><a class="on" href="cv-en.html">EN</a><span>·</span><a href="cv-sv.html">SV</a><span>·</span><a href="cv-no.html">NO</a></nav>
     <a class="back" href="index-en.html">← Home</a>
   </div>
 </header>
 
 <main>
 
-  <h1>Denis&nbsp;Kuznetsov</h1>
-  <p class="lead">I produce complete content and know how to promote it — from an idea to the finished file, from a single visual to a full online marketing campaign and automated sales system. When needed, I automate the entire process.</p>
-
-  <section>
-    <h2>Contact information</h2>
-    <div class="contacts">
-      <div class="row"><a href="mailto:carbo.lignum@gmail.com">carbo.lignum@gmail.com</a></div>
-      <div class="row"><a href="https://www.linkedin.com/in/denis-k-a53920276" target="_blank" rel="noopener">www.linkedin.com/in/denis-k-a53920276</a></div>
-      <div class="row"><span>Website:</span> <a href="index-en.html">landing page</a></div>
-      <div class="row"><span>Content samples:</span> <a href="https://visuals.ai-craft-studio.com/index.html" target="_blank" rel="noopener">visuals.ai-craft-studio.com</a></div>
-      <div class="row"><span>Sales system:</span> <a href="https://ai-craft-studio.com/index.html" target="_blank" rel="noopener">ai-craft-studio.com</a></div>
+  <section class="hero wrap">
+    <h1>Denis&nbsp;Kuznetsov</h1>
+    <div class="tagline">CONTENT • SALES</div>
+    <div class="sub">Content Production &amp; Promotion • Sales &amp; Customer Acquisition</div>
+    <div class="body">
+      <p>I work in two main areas: digital content production and promotion and sales and customer acquisition.</p>
+      <p>I use AI, automation and data analysis as practical tools to accelerate production, process large volumes of information, personalize communication and automate repetitive processes.</p>
     </div>
   </section>
 
-  <section>
-    <h2>Languages</h2>
-    <p>With the help of AI, I can handle written communication and prepare materials in any language.</p>
-    <p>My AI agent can take voice questions in any language — you can simply talk to it directly on the website.</p>
+  <section class="pillar wrap">
+    <div class="label">CONTENT</div>
+    <div class="title">Content Production &amp; Promotion</div>
+    <p class="lead">I can independently handle the full cycle — from an idea and source materials to finished content, publication and promotion.</p>
+    <div class="grid">
+      <div class="item">
+        <h3>Video</h3>
+        <p>Production of different video formats: advertising and presentation videos, short vertical videos, and content for social media, YouTube and websites.</p>
+        <p>Editing, graphics, sound, AI video and adaptation of materials for different formats and platforms.</p>
+      </div>
+      <div class="item">
+        <h3>Design, Images &amp; Graphics</h3>
+        <p>Creation of advertising images, banners, visuals for social media and websites, product images and other digital materials.</p>
+        <p>Photo processing and the creation and editing of images, graphics and visual materials using AI and other tools.</p>
+      </div>
+      <div class="item">
+        <h3>Copy</h3>
+        <p>Advertising and informational copy, social media posts, product and service descriptions, and content for websites, landing pages and advertising campaigns.</p>
+      </div>
+      <div class="item">
+        <h3>Social Media &amp; Promotion</h3>
+        <p>Preparation and adaptation of content for specific channels and formats, publication and promotion.</p>
+        <p>Advertising materials, Meta Ads and Google Ads, analysis of results and subsequent adjustment of content and promotion.</p>
+      </div>
+      <div class="item">
+        <h3>Websites &amp; Landing Pages</h3>
+        <p>Creation and content production for websites and landing pages. Combining text, images, video, advertising and analytics into a single digital project.</p>
+      </div>
+    </div>
+    <div class="cta">
+      <h4>Selected Work</h4>
+      <p>Video, images, design and other examples of my content work:</p>
+      <a class="linkbig" href="https://visuals.ai-craft-studio.com/index.html" target="_blank" rel="noopener">visuals.ai-craft-studio.com</a>
+    </div>
   </section>
 
-  <section>
-    <h2>About me</h2>
-    <p>Video, photography, graphics, copy, websites, advertising, sales, and automation. I can handle all of this independently because my entire production and sales workflow is built around AI tools.</p>
-    <p>Content creation and sales are parts of a single, seamless process for me. Versatility here does not mean a scattered skill set. It is how the workflow is structured: the video, the visuals for it, copy for each channel, the landing page, the advertising campaign, and automated lead acquisition are all components of a single task. Splitting that work among multiple specialists is more expensive and slower than producing it as one integrated process.</p>
-    <p>I entered generative production as the market itself was emerging and have remained hands-on ever since.</p>
+  <section class="pillar wrap">
+    <div class="label">SALES</div>
+    <div class="title">Sales &amp; Customer Acquisition</div>
+    <p class="lead">I can work not only with individual stages of sales, but also build the process for finding and acquiring potential customers.</p>
+    <div class="grid">
+      <div class="item">
+        <h3>Customer Prospecting &amp; Database Building</h3>
+        <p>Finding potential customers, creating targeted and local databases, and collecting, structuring and processing available data.</p>
+      </div>
+      <div class="item">
+        <h3>Market &amp; Competitor Analysis</h3>
+        <p>Analysis of markets, competitors, location and other available data. Use of statistical and mathematical methods to evaluate, select and prioritize potential customers.</p>
+      </div>
+      <div class="item">
+        <h3>Segmentation &amp; Selection</h3>
+        <p>Processing large databases and selecting companies or customers according to defined criteria, characteristics and the potential relevance of an offer.</p>
+      </div>
+      <div class="item">
+        <h3>Personalized Communication</h3>
+        <p>Preparation of individual outreach and commercial proposals based on the specific company, its activities and available information.</p>
+      </div>
+      <div class="item">
+        <h3>Sales Automation</h3>
+        <p>Using AI and automation to find and process potential customers, analyse data, prepare personalized communication, support the process and process results.</p>
+      </div>
+    </div>
+    <div class="cta">
+      <p>I can combine these operations into one workflow:</p>
+      <div class="chain">market and data → prospect database → analysis → selection → personalized outreach → proposal → further processing → analytics</div>
+    </div>
   </section>
 
-  <section>
-    <h2>Skills</h2>
+  <section class="section wrap">
+    <h2>WORKING SYSTEMS &amp; PROJECTS</h2>
 
-    <div class="block"><h3>Autonomous Sales &amp; Client Acquisition</h3>
-    <p>I set AI to locate and engage target customers completely autonomously. I build unique local client databases driven by statistical data, mathematical models, and competitor analysis. The AI agent handles communication and guides prospects through the sales funnel without manual routine work.</p>
-    <p>Practical Case: I designed and launched an autonomous AI agent for the restaurant industry (HoReCa). The system independently gathers a local target customer database and interacts with prospects via a web application, generating 20+ automated orders daily. Sales shift from guesswork into a predictable, manageable algorithm. The system can be seen at <a href="https://ai-craft-studio.com/index.html" target="_blank" rel="noopener">ai-craft-studio.com</a>.</p></div>
+    <div class="case">
+      <h3>Automated Client Acquisition System — HoReCa</h3>
+      <div class="row"><div class="k">Task</div><div class="v"><p>Build a system that independently finds potential customers in the restaurant industry and takes them through the initial stages of discovering the offer.</p></div></div>
+      <div class="row"><div class="k">What I Built</div><div class="v"><p>The system combines prospecting, database creation and processing, analysis of available data, personalized communication and presentation of a specific offer for the restaurant industry.</p>
+        <p>A real commercial product was built for the project: an autonomous sales system for restaurants with its own ordering channel, AI agent, customer database processes, content and other components of the solution.</p></div></div>
+      <div class="row"><div class="k">What the System Does</div><div class="v"><p>Prospecting and initial communication are automated. The system works independently with potential customers and makes it possible to scale customer acquisition without manually processing every contact.</p></div></div>
+      <div class="caselink">
+        <p>Public implementation of the project:</p>
+        <a class="linkbig" href="https://ai-craft-studio.com/index.html" target="_blank" rel="noopener">ai-craft-studio.com</a>
+      </div>
+    </div>
 
-    <div class="block"><h3>Video</h3>
-    <p>Vertical and horizontal video for Instagram, TikTok, YouTube, and websites. From advertising videos to feature-length films. Shot composition and camera control, complex scenes, chroma key, cinematic visual effects. Integration of generated objects into real-world footage. Scene modification without reshooting.</p></div>
+    <div class="case">
+      <h3>AI Job Agent</h3>
+      <div class="row"><div class="k">Task</div><div class="v"><p>Automate the search and processing of large volumes of job vacancies and identify those that correspond to my actual professional capabilities.</p></div></div>
+      <div class="row"><div class="k">What I Built</div><div class="v"><p>The system retrieves vacancies and their full content from external sources, collects and structures the data, performs local filtering and semantic analysis of the content.</p>
+        <p>Suitable vacancies are then passed to a separate employer outreach process.</p></div></div>
+      <div class="row"><div class="k">What the System Does</div><div class="v"><p>The system can process thousands of vacancies every day, automatically filter out irrelevant ones, analyse the remaining vacancies, select suitable opportunities and pass them to the next outreach process.</p>
+        <p>The outreach process takes available channels into account — forms and email — together with the history of previous actions and protection against repeated outreach for the same vacancy.</p>
+        <p>AI is one component of the working process alongside data collection, processing rules, automation and state management.</p></div></div>
+      <div class="caselink">
+        <p>AI Job Agent — working system:</p>
+        <a class="linkbig" href="https://carbolignum.github.io/resume/index.html" target="_blank" rel="noopener">carbolignum.github.io/resume/index.html</a>
+      </div>
+    </div>
 
-    <div class="block"><h3>Photography &amp; Graphics</h3>
-    <p>Complex scenes, camera angles, and lighting. Product and advertising visuals. Banners, covers, and social media posts. Campaign materials in every format and size required for each channel — one master design adapted across all channels.</p></div>
-
-    <div class="block"><h3>Social Media</h3>
-    <p>Content planning, production, publishing, and scheduling. Instagram, TikTok, Facebook, LinkedIn. No limits on the number of posts or channels.</p></div>
-
-    <div class="block"><h3>Analytics &amp; Reporting</h3>
-    <p>Tracking publication performance, reporting by channel and asset, and correcting what did not work. Each new piece of content is informed by performance metrics and hard data.</p></div>
-
-    <div class="block"><h3>Advertising</h3>
-    <p>Meta Ads and Google Ads: campaign setup, budgeting, targeting, and optimization.</p></div>
-
-    <div class="block"><h3>Copywriting</h3>
-    <p>Websites, blogs, social media, descriptions, email campaigns, presentations — structure, content, and layout through to the finished file.</p></div>
-
-    <div class="block"><h3>Websites</h3>
-    <p>Website creation, content population, visual and content updates, and ongoing maintenance.</p></div>
-
-    <div class="block"><h3>Process Automation &amp; Modernization</h3>
-    <p>Automated publishing and channel management. Processing incoming inquiries. Automatic preparation and delivery of commercial proposals based on product and customer parameters. Data collection with automatic identification and correction of weak points. AI agents that communicate with customers by voice and text. The system is configured once and then continues operating without manual work.</p></div>
-
-    <div class="block"><h3>AI Integration into Existing Processes</h3>
-    <p>I identify where manual work is consuming time and replace that part of the process with a working automated system.</p></div>
+    <div class="case">
+      <h3>Digital Content Production &amp; Promotion</h3>
+      <p>I can also organize content production as a connected workflow:</p>
+      <div class="chain">idea → image / video → copy → channel adaptation → publication → advertising and promotion → results analysis</div>
+      <div class="row" style="margin-top:18px"><div class="k">What the System Does</div><div class="v"><p>This makes it possible to work not only on an individual image, video or text, but on the complete content production and promotion chain.</p></div></div>
+      <div class="caselink">
+        <p>Examples:</p>
+        <a class="linkbig" href="https://visuals.ai-craft-studio.com/index.html" target="_blank" rel="noopener">visuals.ai-craft-studio.com</a>
+      </div>
+    </div>
   </section>
 
-  <div class="offer">
-    <h2>What I offer</h2>
-    <p class="big">The minimum assignment can be a single image or a single automation script.</p>
-    <p>I work under an employment contract, including fixed-term contracts for a specific project or part of a project.</p>
-    <p>No subscription, no annual contract, no lengthy onboarding. One visual, one video, one page, one piece of copy, or an automation test. You see the result and decide whether to continue.</p>
-    <p>I take on both one-off assignments and ongoing work.</p>
-  </div>
+  <section class="section minor wrap">
+    <h2>ADDITIONAL CAPABILITIES</h2>
+    <p class="intro">I use these capabilities as additional tools for CONTENT, SALES and other company processes.</p>
+    <div class="grid">
+      <div class="item">
+        <h3>AI Integration</h3>
+        <p>Integration of AI into existing workflows: information processing, analysis, material production, communication and repetitive operations.</p>
+      </div>
+      <div class="item">
+        <h3>Process Automation</h3>
+        <p>Analysis of an existing process, identification of manual and repetitive stages, and development of tools to automate them.</p>
+      </div>
+      <div class="item">
+        <h3>Data &amp; Analytics</h3>
+        <p>Data collection and processing, statistical analysis, competitor analysis, GA4, Plausible, Matomo, UTM, Meta/Google pixels, CRM and my own Python tools.</p>
+      </div>
+      <div class="item">
+        <h3>Web</h3>
+        <p>Websites, landing pages and web tools for content, sales and other digital tasks.</p>
+      </div>
+    </div>
+    <p class="note">For me, the main purpose of these technologies is solving a specific practical problem, rather than using AI or automation for their own sake.</p>
+  </section>
 
-  <section>
-    <h2>Experience &amp; Education</h2>
-    <p>Generative production and AI automation are young fields where traditional years of experience are not the deciding factor. What matters most is the ability to adapt quickly to new models, the range of tools you can work with, and measurable results.</p>
-    <p>Instead of lengthy presentations, I offer a test using a real task.</p>
+  <section class="section wrap">
+    <h2>EXPERIENCE</h2>
+    <div class="job">
+      <h3>2022–Present | Self-employed, Finland</h3>
+      <p>Content and digital promotion, internet projects, sales, automation and development of my own AI tools.</p>
+    </div>
+    <div class="job">
+      <h3>2014–2022 | Self-employed in Internet Commerce</h3>
+    </div>
+    <p class="expnote">More than 3 years of practical work with AI in content production and workflow automation.</p>
+  </section>
+
+  <section class="section permit wrap">
+    <h2>WORK PERMIT</h2>
+    <p>Work permit: Yes.</p>
+  </section>
+
+  <section class="section wrap">
+    <h2>CONTACT &amp; WORK</h2>
+    <div class="contacts">
+      <div>
+        <div class="who">Denis Kuznetsov</div>
+        <div class="c">
+          <div class="k">Email</div>
+          <div><a href="mailto:denis@ai-craft-studio.com">denis@ai-craft-studio.com</a></div>
+          <div><a href="mailto:carbo.lignum@gmail.com">carbo.lignum@gmail.com</a></div>
+        </div>
+        <div class="c">
+          <div class="k">LinkedIn</div>
+          <div><a href="https://www.linkedin.com/in/denis-k-a53920276/" target="_blank" rel="noopener">linkedin.com/in/denis-k-a53920276/</a></div>
+        </div>
+      </div>
+      <div>
+        <div class="c">
+          <div class="k">Content / Portfolio</div>
+          <div><a href="https://visuals.ai-craft-studio.com/index.html" target="_blank" rel="noopener">visuals.ai-craft-studio.com</a></div>
+        </div>
+        <div class="c">
+          <div class="k">HoReCa Project</div>
+          <div><a href="https://ai-craft-studio.com/index.html" target="_blank" rel="noopener">ai-craft-studio.com</a></div>
+        </div>
+      </div>
+    </div>
   </section>
 
 </main>
