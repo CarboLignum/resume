@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="no">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -183,7 +183,6 @@
     filter:drop-shadow(0 2px 18px rgba(0,0,0,.55));
     animation:risename 1.4s .28s cubic-bezier(.16,1,.3,1) both;
   }
-
   .panel{
     display:flex;
     flex-direction:column;
@@ -366,9 +365,9 @@
 <header>
   <div class="nav">
     <div class="lang">
-      <a href="index.html">FI</a><span>·</span><a class="on" href="index-en.html">EN</a><span>·</span><a href="index-sv.html">SV</a><span>·</span><a href="index-no.html">NO</a>
+      <a href="index.html">FI</a><span>·</span><a href="index-en.html">EN</a><span>·</span><a href="index-sv.html">SV</a><span>·</span><a class="on" href="index-no.html">NO</a>
     </div>
-    <a class="cv" href="cv-en.html">CV</a>
+    <a class="cv" href="cv-no.html">CV</a>
   </div>
 </header>
 
@@ -380,15 +379,15 @@
   </div>
 
   <section class="panel">
-    <h2>Ask me</h2>
+    <h2>Spør meg</h2>
 
     <div class="log" id="log">
-      <div class="msg ai">Hi. Ask anything about what I do — speak or type, in any language you like.</div>
+      <div class="msg ai">Hei. Spør om hva som helst om det jeg gjør — snakk eller skriv på det språket du vil.</div>
     </div>
 
     <form class="composer" id="form">
-      <input id="q" type="text" autocomplete="off" placeholder="Type your question…">
-      <button class="mic" id="mic" type="button" aria-label="Speak">
+      <input id="q" type="text" autocomplete="off" placeholder="Skriv et spørsmål…">
+      <button class="mic" id="mic" type="button" aria-label="Snakk">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
           <rect x="9" y="2.5" width="6" height="11" rx="3" fill="currentColor" stroke="none"/>
           <path d="M5 11a7 7 0 0 0 14 0"/>
@@ -397,7 +396,7 @@
       </button>
     </form>
 
-    <div class="hint" id="hint">Press the microphone and speak</div>
+    <div class="hint" id="hint">Trykk på mikrofonen og snakk</div>
   </section>
 
 </main>
@@ -422,14 +421,14 @@
   const WORKER = 'https://round-scene-4de7.carbo-lignum.workers.dev';
 
   const TXT = {
-    down:  'The connection is down right now. Write directly: carbo.lignum@gmail.com',
-    idle:  'Press the microphone and speak',
-    rec:   'Recording…',
-    work:  'Listening…',
-    voice: 'voice message',
-    noMic: 'Microphone unavailable',
-    long:  'The message is too long',
-    quiet: 'I did not hear anything — speak closer to the microphone'
+    down:  'Tilkoblingen fungerer ikke akkurat nå. Skriv direkte til: carbo.lignum@gmail.com',
+    idle:  'Trykk på mikrofonen og snakk',
+    rec:   'Tar opp…',
+    work:  'Lytter…',
+    voice: 'talemelding',
+    noMic: 'Mikrofonen er ikke tilgjengelig',
+    long:  'Meldingen er for lang',
+    quiet: 'Jeg hørte ingenting — snakk nærmere mikrofonen'
   };
 
   const history = [];
