@@ -1,0 +1,263 @@
+/* ОБЩАЯ ТАБЛИЦА СТИЛЕЙ ЧЕТЫРЁХ СТРАНИЦ РЕЗЮМЕ.
+   cv.html (fi), cv-en.html (en), cv-sv.html (sv), cv-no.html (no).
+
+   Одна таблица на четыре страницы: вид у всех языков обязан совпадать,
+   а четыре копии стилей рано или поздно разъезжаются. Правится только
+   этот файл.
+
+   Шрифт и палитра взяты с существующих страниц сайта (index.html,
+   старый cv.html): чёрный фон, Inter, стеклянные карточки. Резюме не
+   должно выглядеть чужим рядом с посадочной страницей. */
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+:root{
+  --bg:#000;
+  --ink:#f5f5f7;
+  --dim:rgba(245,245,247,.66);
+  --faint:rgba(245,245,247,.34);
+  --line:rgba(255,255,255,.10);
+  --line-hi:rgba(255,255,255,.22);
+  --glass:rgba(255,255,255,.045);
+  --glass-hi:rgba(255,255,255,.075);
+}
+
+body{
+  background:radial-gradient(120% 80% at 50% 0%, #141414 0%, #070707 40%, #000 75%) no-repeat;
+  background-attachment:fixed;
+  background-color:var(--bg);
+  color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.62;
+  font-size:16px;
+  /* Ни один блок не имеет права вытолкнуть страницу вбок. Ловушка тут одна:
+     длинные цепочки со стрелками и голые адреса. Для них ниже стоит
+     собственная прокрутка, а телефону запрещён общий боковой сдвиг. */
+  overflow-x:hidden;
+}
+
+/* --- ШАПКА ---------------------------------------------------------------- */
+
+.top{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:14px clamp(18px,5vw,56px);
+  background:rgba(0,0,0,.62);
+  -webkit-backdrop-filter:blur(24px); backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--line);
+}
+.top .who{
+  font-size:12px; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--dim); white-space:nowrap;
+}
+.top .right{display:flex;align-items:center;gap:clamp(10px,1.6vw,22px)}
+
+.lang{display:flex;align-items:center;gap:.45em;font-size:12px;font-weight:500;letter-spacing:.1em}
+.lang a{color:var(--faint);text-decoration:none;transition:color .3s}
+.lang a:hover{color:var(--dim)}
+.lang a.on{color:var(--ink)}
+.lang span{color:rgba(255,255,255,.16)}
+
+.back{
+  padding:.55em 1.15em; font-size:11px; font-weight:500; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--ink); text-decoration:none; white-space:nowrap;
+  border:1px solid var(--line); border-radius:100px; background:var(--glass);
+  transition:background .3s,border-color .3s;
+}
+.back:hover{background:var(--glass-hi);border-color:var(--line-hi)}
+
+/* --- ОБЩЕЕ ---------------------------------------------------------------- */
+
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(18px,5vw,56px)}
+main{padding-bottom:120px}
+
+p{color:var(--dim);max-width:44em}
+p + p{margin-top:14px}
+
+a{color:inherit}
+a:visited{color:inherit}
+
+/* --- ВЕРХ СТРАНИЦЫ -------------------------------------------------------- */
+
+.hero{padding:clamp(52px,10vh,120px) 0 clamp(40px,6vh,64px)}
+.hero h1{
+  font-size:clamp(34px,6vw,68px); font-weight:600; letter-spacing:-.03em; line-height:1.03;
+}
+.hero .tagline{
+  margin-top:.5em;
+  font-size:clamp(15px,2.4vw,22px); font-weight:600; letter-spacing:.24em;
+  color:var(--ink);
+}
+.hero .sub{
+  margin-top:.9em; max-width:38em;
+  font-size:clamp(15px,1.7vw,19px); color:var(--dim); letter-spacing:-.01em;
+}
+.hero .body{margin-top:clamp(24px,3.5vh,38px)}
+.hero .body p{max-width:42em}
+
+/* --- ДВЕ ГЛАВНЫЕ ЛИНИИ ---------------------------------------------------- */
+/* CONTENT и SALES набраны крупнее всего остального намеренно: работодатель
+   должен увидеть две профессии раньше, чем начнёт читать. Остальные разделы
+   ниже по размеру и по контрасту, и это единственный способ показать
+   старшинство без картинок. */
+
+.pillar{
+  padding:clamp(38px,6vh,60px) 0;
+  border-top:1px solid var(--line);
+}
+.pillar .label{
+  font-size:clamp(30px,5.2vw,54px); font-weight:600; letter-spacing:.06em; line-height:1;
+  color:var(--ink);
+}
+.pillar .title{
+  margin-top:.55em;
+  font-size:clamp(17px,2.1vw,23px); font-weight:500; letter-spacing:-.01em; color:var(--ink);
+}
+.pillar .lead{margin-top:14px;font-size:clamp(15px,1.6vw,17px);max-width:44em}
+
+.grid{
+  margin-top:clamp(28px,4vh,42px);
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(20px,2.6vw,34px);
+}
+.item{min-width:0}
+.item h3{
+  font-size:16px; font-weight:600; letter-spacing:-.01em; color:var(--ink);
+  padding-bottom:10px; margin-bottom:10px; border-bottom:1px solid var(--line);
+}
+.item p{font-size:15px;max-width:none}
+
+/* --- ССЫЛКА-КНОПКА НА РАБОТЫ ---------------------------------------------- */
+
+.cta{
+  margin-top:clamp(26px,3.6vh,38px);
+  padding:clamp(18px,2.4vw,26px);
+  border:1px solid var(--line); border-radius:18px; background:var(--glass);
+}
+.cta h4{
+  font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:10px;
+}
+.cta p{margin:0 0 12px;font-size:15px}
+.linkbig{
+  display:inline-block; max-width:100%;
+  font-size:clamp(15px,1.9vw,19px); font-weight:600; letter-spacing:-.01em;
+  color:var(--ink); text-decoration:none;
+  border-bottom:1px solid var(--line-hi); padding-bottom:2px;
+  overflow-wrap:anywhere;
+  transition:border-color .3s;
+}
+.linkbig:hover{border-color:var(--ink)}
+
+/* --- ЦЕПОЧКИ СО СТРЕЛКАМИ ------------------------------------------------- */
+/* Собственная прокрутка. Цепочка из восьми шагов на телефоне не переносится
+   красиво никогда; пусть лучше едет внутри своей рамки, чем тащит за собой
+   всю страницу. */
+
+.chain{
+  margin-top:14px; padding:14px 16px;
+  border:1px solid var(--line); border-radius:12px; background:var(--glass);
+  color:var(--ink); font-size:14px; line-height:1.7;
+  overflow-x:auto; overflow-wrap:anywhere;
+}
+
+/* --- РЕАЛЬНЫЕ СИСТЕМЫ ----------------------------------------------------- */
+/* Кейсы обязаны отличаться от списка навыков: рамка, свой фон, подписи
+   «задача / что построено / что делает» отдельной колонкой. */
+
+.section{padding:clamp(38px,6vh,60px) 0;border-top:1px solid var(--line)}
+.section > h2{
+  font-size:12px; font-weight:500; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--faint); padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:clamp(24px,3.4vh,34px);
+}
+.section .intro{font-size:15px;margin-bottom:clamp(20px,3vh,28px)}
+
+.case{
+  padding:clamp(22px,3vw,34px);
+  border:1px solid var(--line-hi); border-radius:22px; background:var(--glass);
+  -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
+}
+.case + .case{margin-top:clamp(18px,2.4vh,26px)}
+.case > h3{
+  font-size:clamp(18px,2.2vw,24px); font-weight:600; letter-spacing:-.02em; color:var(--ink);
+  margin-bottom:clamp(18px,2.4vh,24px);
+}
+.row{
+  display:grid; grid-template-columns:180px minmax(0,1fr);
+  gap:clamp(14px,2vw,28px);
+  padding-top:18px; border-top:1px solid var(--line);
+}
+.row:first-of-type{padding-top:0;border-top:0}
+.row + .row{margin-top:18px}
+.row .k{
+  font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--faint); padding-top:.35em;
+}
+.row .v{min-width:0}
+.row .v p{font-size:15px;max-width:none}
+.caselink{margin-top:clamp(18px,2.4vh,24px);padding-top:18px;border-top:1px solid var(--line)}
+.caselink p{font-size:14px;margin-bottom:8px}
+
+/* --- ДОПОЛНИТЕЛЬНЫЕ ВОЗМОЖНОСТИ ------------------------------------------- */
+
+.minor .grid{margin-top:0}
+.minor .item h3{font-size:15px}
+.minor .item p{font-size:14px}
+.minor .note{margin-top:clamp(24px,3vh,32px);font-size:14px}
+
+/* --- ОПЫТ ----------------------------------------------------------------- */
+
+.job + .job{margin-top:24px}
+.job h3{font-size:16px;font-weight:600;letter-spacing:-.01em;color:var(--ink);margin-bottom:6px}
+.job p{font-size:15px}
+.expnote{margin-top:26px;padding-top:20px;border-top:1px solid var(--line);font-size:15px}
+
+/* --- РАЗРЕШЕНИЕ НА РАБОТУ ------------------------------------------------- */
+/* Одна строка. Ни объяснений, ни дат, ни статуса — так решено заказчиком. */
+
+.permit p{font-size:clamp(16px,2vw,20px);font-weight:500;color:var(--ink)}
+
+/* --- КОНТАКТЫ ------------------------------------------------------------- */
+
+.contacts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2.6vw,32px)}
+.contacts .who{font-size:16px;font-weight:600;color:var(--ink);margin-bottom:14px}
+.contacts .k{
+  font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:5px;
+}
+.contacts .c + .c{margin-top:18px}
+.contacts a{
+  color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--line);padding-bottom:1px;
+  overflow-wrap:anywhere;
+  transition:border-color .3s;
+}
+.contacts a:hover{border-color:var(--line-hi)}
+
+/* --- УЗКИЕ ЭКРАНЫ --------------------------------------------------------- */
+
+@media (max-width:900px){
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .contacts{grid-template-columns:minmax(0,1fr)}
+  .row{grid-template-columns:minmax(0,1fr);gap:8px}
+  .row .k{padding-top:0}
+}
+
+@media (max-width:560px){
+  body{font-size:15px}
+  .top{padding:12px 18px;gap:10px}
+  .top .who{font-size:11px;letter-spacing:.1em}
+  .lang{font-size:11px;gap:.35em}
+  .back{padding:.5em .9em;font-size:10px}
+  .hero .tagline{letter-spacing:.16em}
+  .item p,.row .v p,.job p{font-size:14px}
+}
+
+/* Совсем узкие телефоны: имя в шапке уступает место переключателю языков —
+   на 320 px три элемента в строку не помещаются, а язык нужнее. */
+@media (max-width:380px){
+  .top .who{display:none}
+  .top{justify-content:flex-end}
+}
